@@ -1,5 +1,26 @@
 title: Karthik Rajesh
 logo: /assets/img/headshot.png
-#description: text below image
-show_downloads: true
+description: >-
+  ML-focused engineer with an MSc in Business Analytics (University of Nottingham).
+  I build production-ready, explainable ML pipelines and data integrations end-to-end.
+  Experience: Senior Solution Engineer at IBS Software (client: Expedia) and Project Developer at EMtel.
+  Target roles: Software Development Engineer (ML), Machine Learning Engineer, Data Scientist/Engineer, or IT Business Analyst.
+  Explore the Projects section for selected work and impact.
+show_downloads: false
 theme: jekyll-theme-minimal
+
+# Site URLs
+author:
+  name: "Karthik Rajesh"
+  email: "karthikrajesh5@gmail.com"
+  github: "https://github.com/im-karthikrajesh"
+  linkedin: "https://www.linkedin.com/in/karthikrajesh05"
+
+# Build
+markdown: kramdown
+kramdown:
+  input: GFM
+
+timezone: Europe/London
+lang: en
+permalink: pretty
