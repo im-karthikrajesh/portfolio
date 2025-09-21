@@ -3,12 +3,56 @@ layout: default
 title: "{{ site.title }} — Portfolio"
 ---
 
-<!-- Load our custom CSS (compiles from assets/css/style.scss) -->
+<!-- Load the custom CSS (compiled from assets/css/style.scss) -->
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+<!-- SEO (jekyll-seo-tag) + favicon -->
+{% seo %}
+<link rel="icon" href="{{ '/assets/img/headshot.png' | relative_url }}">
+
+<!-- Person schema for richer search previews -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Karthik Rajesh",
+  "url": "{{ site.url }}{{ site.baseurl }}",
+  "email": "mailto:{{ site.author.email }}",
+  "sameAs": ["{{ site.author.github }}", "{{ site.author.linkedin }}"]
+}
+</script>
+
+<!-- Theme: set initial theme ASAP (saved -> system preference) and wire the toggle -->
+<script>
+(function () {
+  const KEY = 'theme';
+  const root = document.documentElement;
+  const saved = localStorage.getItem(KEY);
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = saved || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', initial);
+
+  window.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      const current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(KEY, next); } catch(e) {}
+      btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    });
+  }, { once: true });
+})();
+</script>
 
 <!-- ===== Hero ===== -->
 <div class="hero">
-  <img class="headshot" src="{{ site.logo | relative_url }}" alt="Headshot of {{ site.title }}" />
+  <img class="headshot"
+       src="{{ site.logo | relative_url }}"
+       alt="Headshot of {{ site.title }}"
+       width="120" height="120"
+       decoding="async" fetchpriority="high" />
   <div class="hero-text">
     <h1>{{ site.title }}</h1>
     <p class="tagline">{{ site.description }}</p>
@@ -17,16 +61,25 @@ title: "{{ site.title }} — Portfolio"
       · <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
       · <a href="mailto:{{ site.author.email }}">Email</a>
     </p>
-    <p class="open-to">Open to: <strong>SDE (ML)</strong>, <strong>ML Engineer</strong>, <strong>Data Scientist/Engineer</strong>, <strong>IT Business Analyst</strong></p>
+    <p class="open-to">
+      Open to: <strong>SDE (ML)</strong>, <strong>ML Engineer</strong>, <strong>Data Scientist/Engineer</strong>, <strong>IT Business Analyst</strong>
+    </p>
   </div>
 </div>
 
-<!-- ===== Section Nav ===== -->
+<!-- ===== Section Nav (with theme toggle) ===== -->
 <nav class="nav">
   <a href="#projects">Projects</a>
   <a href="#experience">Experience</a>
   <a href="#education">Education</a>
   <a href="#contact">Contact</a>
+
+  <button id="theme-toggle" class="theme-toggle" type="button"
+          aria-live="polite" aria-label="Toggle dark or light theme">
+    <span class="icon icon-sun" aria-hidden="true">☀️</span>
+    <span class="icon icon-moon" aria-hidden="true">🌙</span>
+    <span class="sr-only">Toggle theme</span>
+  </button>
 </nav>
 
 ---
@@ -37,15 +90,29 @@ title: "{{ site.title }} — Portfolio"
 <div class="grid">
   {% for p in site.data.projects %}
   <div class="card">
-    {% if p.image %}<img class="thumb" src="{{ p.image | relative_url }}" alt="{{ p.title }} thumbnail">{% endif %}
+    {% if p.image %}
+      <img class="thumb"
+           src="{{ p.image | relative_url }}"
+           alt="{{ p.title }} thumbnail"
+           loading="lazy" decoding="async">
+    {% endif %}
+
     <h3>{{ p.title }}</h3>
     {% if p.period %}<p class="muted">{{ p.period }}</p>{% endif %}
     {% if p.tagline %}<p>{{ p.tagline }}</p>{% endif %}
 
     {% if p.highlights %}
-    <ul>
-      {% for h in p.highlights %}<li>{{ h }}</li>{% endfor %}
-    </ul>
+      <ul>
+        {% for h in p.highlights limit:3 %}<li>{{ h }}</li>{% endfor %}
+      </ul>
+      {% if p.highlights.size > 3 %}
+        <details>
+          <summary>More details</summary>
+          <ul>
+            {% for h in p.highlights offset:3 %}<li>{{ h }}</li>{% endfor %}
+          </ul>
+        </details>
+      {% endif %}
     {% endif %}
 
     <p class="meta">
@@ -55,17 +122,15 @@ title: "{{ site.title }} — Portfolio"
     </p>
 
     {% if p.tech %}
-    <div class="tags">
-      {% for t in p.tech %}<span class="tag">{{ t }}</span>{% endfor %}
-    </div>
+      <div class="tags">
+        {% for t in p.tech %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
     {% endif %}
   </div>
   {% endfor %}
 </div>
 {% else %}
-<p class="muted">
-  No projects found. This section is driven by <code>_data/projects.yml</code>.
-</p>
+<p class="muted">No projects found. This section is driven by <code>_data/projects.yml</code>.</p>
 {% endif %}
 
 ---
