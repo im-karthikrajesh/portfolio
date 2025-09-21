@@ -1,0 +1,83 @@
+# Each entry renders as a card on the homepage.
+# Use RELATIVE paths for images (no leading slash) so it works locally and on GitHub Pages.
+
+- title: "Hotel Booking Cancellations — Predictive & Geospatial Analysis"
+  period: "2025"
+  tagline: "Calibrated, reproducible Geo-ML pipeline predicting booking-level cancellation risk and explaining cross-country heterogeneity."
+  highlights:
+    - "Harmonised multi-year hotel data with ISO-3; enriched with World Bank WDI + Hofstede; staged imputation (linear fills → UNSD region medians → PMM-MICE) with leakage controls and principled outlier handling."
+    - "Benchmarked Logistic Regression, Random Forest, XGBoost, LightGBM, and MLP via stratified CV in a single ColumnTransformer pipeline; tuned with Optuna; post-calibrated (Platt/Isotonic) and thresholded for operations."
+    - "Explained drivers using TreeSHAP, PDP/ICE, and group-permutation importance to quantify the incremental value of external context beyond a country label."
+    - "Geospatial lens: GeoPandas/Folium choropleths, Bayesian-shrunk country profiles, Moran’s I & LISA diagnostics, and bivariate maps linking predicted risk with macro indicators."
+    - "Outcome: a pragmatic, explainable pipeline that turns calibrated risk into geo-tiered playbooks—supporting overbooking buffers, deposit/guarantee policy tests, and targeted pre-stay outreach."
+  tech: ["Python", "scikit-learn", "XGBoost", "LightGBM", "RandomForest", "MLP", "Optuna", "SHAP", "PDP/ICE", "GeoPandas", "Folium", "Moran's I", "LISA"]
+  repo: "https://github.com/im-karthikrajesh/hotel-booking-cancellations-geo-ml"
+  image: "assets/img/projects/hotel-bookings.png"
+
+- title: "Temporal Churn Prediction (ML)"
+  period: "2025"
+  tagline: "Weekly churn pipeline with strict temporal causality: 90-day lookback, 38-day churn horizon, rolling 7-day snapshots."
+  highlights:
+    - "Features predominantly engineered in SQL (Spark): RFM, tenure, inter-purchase gaps & momentum, recency-weighted monetary value, rolling frequency, product diversity, and seasonal sine/cosine."
+    - "Winsorised, log-transformed, standardised; temporal split (train→val→test by week) with rolling backtests; calibrated probabilities (Platt/Isotonic)."
+    - "Benchmarked Logistic Regression, Random Forest, XGBoost; interpretability via SHAP & PDPs; drift-aware weekly evaluation."
+    - "Delivered dual outputs each week: unbiased churn-probability forecasts for planning and a thresholded churn-flag list for targeting."
+    - "Outcome: a robust, explainable pipeline that flags at-risk customers weekly, supports targeted retention, and remains stable under temporal drift."
+  tech: ["Python", "SQL (Spark)", "Pandas", "scikit-learn", "XGBoost", "RandomForest", "LogisticRegression", "Optuna", "Calibration", "SHAP", "PDP"]
+  repo: "https://github.com/im-karthikrajesh/temporal-churn-prediction"
+  image: "assets/img/projects/churn.png"
+
+- title: "Term-Deposit Subscription Predictor (ML)"
+  period: "2024"
+  tagline: "Production-ready classifier to prioritise telemarketing contacts for fixed-term deposits."
+  highlights:
+    - "EDA on ~4k historical calls; addressed class imbalance (~78.5% non-subscribers); clean categorical encodings; leakage audit."
+    - "Deliberately excluded call duration from final model to avoid target leakage, while retaining it for descriptive insight."
+    - "Benchmarked Logistic Regression, Naive Bayes, Decision Tree, KNN, Random Forest with tuned hyperparameters and stratified evaluation."
+    - "Champion Random Forest: ≈81.4% accuracy, precision ≈62%, recall ≈34%, ROC-AUC ≈0.72; best precision for reducing costly false-positive calls."
+    - "Packaged deployable artefacts (model + encoder) with straightforward scoring instructions."
+    - "Outcome: a pragmatic, explainable pipeline that focuses agents on receptive leads and cuts wasted call time."
+  tech: ["Python", "scikit-learn", "RandomForest", "LogisticRegression", "NaiveBayes", "DecisionTree", "KNN", "SMOTE"]
+  repo: "https://github.com/im-karthikrajesh/deposit-subscription-predictor"
+  image: "assets/img/projects/deposits.png"
+
+- title: "Brand Analysis Using Twitter/X (ML)"
+  period: "2025"
+  tagline: "Actionable text-analytics workflow to compare brand conversations and surface micro-influencers."
+  highlights:
+    - "Text cleaning & normalisation: URL/emoji/mention stripping, tokenisation, stop-word removal, WordNet lemmatisation."
+    - "Hashtag/mention extraction, engagement time-series; sentiment via VADER/TextBlob; TF-IDF + NMF topic modelling."
+    - "Mention-graphs (NetworkX) for visibility/centrality; PCA + K-Means clustering of features."
+    - "Follower-bounded micro-influencer filter; transparent weighted scoring of reach, engagement, centrality, sentiment, activity."
+    - "Outcome: a reproducible analytics stack that clarifies brand themes, finds partnerable micro-influencers, and guides campaign planning."
+  tech: ["Python", "NLP", "VADER", "TextBlob", "TF-IDF", "NMF", "NetworkX", "PCA", "KMeans", "Plotly"]
+  repo: "https://github.com/im-karthikrajesh/brand-analysis-using-twitter"
+  image: "assets/img/projects/brand.png"
+
+- title: "Customer Analytics & Segmentation (ML)"
+  period: "2025"
+  tagline: "End-to-end segmentation for a national convenience retailer (3k customers, 6 months)."
+  highlights:
+    - "Consolidated customers, category_spends, baskets, lineitems with strict cleansing: date parsing, currency/format normalisation, negative-value fixes, category corrections (e.g., bakery spend recomputation from line-items)."
+    - "Engineered features: RFM, tenure, avg basket spend, avg spend per product, unique category count, proportional category spend, avg basket categories."
+    - "Median imputation, IQR outlier clipping, log1p transforms, standardisation; PCA (≥80% variance) to stabilise clustering."
+    - "Benchmarked K-Means (k=5–7 per brief) vs DBSCAN; evaluated with silhouette, SSE, Calinski–Harabasz, Davies–Bouldin."
+    - "Produced pen profiles and an attractiveness_score (weighted features) to rank segments for targeting and campaign design."
+    - "Outcome: a business-aligned, explainable segmentation that turns raw logs into campaign-ready audience playbooks and supports re-clustering cycles."
+  tech: ["Python", "Pandas", "scikit-learn", "PCA", "KMeans", "DBSCAN"]
+  repo: "https://github.com/im-karthikrajesh/customer-analytics-and-segmentation"
+  image: "assets/img/projects/segmentation.png"
+
+- title: "Zoho ↔ Zoey Integrations (EMtel)"
+  period: "2025"
+  tagline: "Production automations linking CRM and billing to streamline operations and engagement."
+  highlights:
+    - "End-to-end integrations between Zoho One and Tekton Zoey: data, events, and workflows unified across platforms."
+    - "Custom Deluge functions, webhooks, REST integrations (Zoho CRM/Books/Campaigns) with MySQL on Plesk; designed for reliability, auditability, and low maintenance."
+    - "Automation layers for lead routing, campaign engagement, account creation, call scheduling; standardised error handling and observability."
+    - "Predictive signals for likelihood-to-stay and interest intent embedded into Zoho for targeted outreach and tiered follow-ups."
+    - "Partnered with business users on requirements, rapid prototyping, training, and SOPs to drive adoption; reusable modules to accelerate future projects."
+    - "Outcome: resilient, traceable CRM-billing automation that improves customer journeys and reduces manual effort."
+  tech: ["Zoho", "Deluge", "PHP", "Python", "MySQL", "REST", "Webhooks"]
+  repo: "https://github.com/im-karthikrajesh"  # project code is private
+  image: "assets/img/projects/integrations.png"
