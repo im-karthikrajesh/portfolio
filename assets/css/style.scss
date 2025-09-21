@@ -235,3 +235,18 @@ details[open] summary::before { transform: rotate(90deg); }
   .nav, .tags, .card .thumb { display: none !important; }
   .card, .hero { box-shadow: none !important; }
 }
+
+/* ===== Two-column shell for home layout ===== */
+.shell {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.left-rail { position: sticky; top: 88px; align-self: start; }
+.content { min-width: 0; } /* prevent overflow in code blocks etc. */
+
+@media (max-width: 980px) {
+  .shell { grid-template-columns: 1fr; }
+  .left-rail { position: static; }
+}
