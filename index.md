@@ -6,6 +6,13 @@ title: "{{ site.title }} — Portfolio"
 <!-- Load the custom CSS (compiled from assets/css/style.scss) -->
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
+<!-- Emergency kill-switch for theme header in case CDN cache delays CSS -->
+<style>
+  .page-header, .project-name, .project-tagline, .site-header,
+  header[role="banner"], header.page-header,
+  .page-header .btn, .page-header .download { display:none !important; }
+</style>
+
 <!-- SEO (jekyll-seo-tag) + favicon -->
 {% seo %}
 <link rel="icon" href="{{ '/assets/img/headshot.png' | relative_url }}">
