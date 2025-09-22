@@ -1,38 +1,46 @@
 title: "Karthik Rajesh"
 logo: /assets/img/headshot.png
+
+# Brief, hiring-focused description for SEO/snippets and the left rail
 description: >-
   MSc in Business Analytics (University of Nottingham). Project Developer at
   EMtel. This portfolio showcases my machine-learning projects and professional
   experience.
 
+# Theme & site basics
 theme: jekyll-theme-minimal
 show_downloads: false
 lang: en
+locale: en_GB
 timezone: Europe/London
 permalink: pretty
+title_separator: " — "   # Used by jekyll-seo-tag for <title> formatting
 
-# Site URLs
-# IMPORTANT for correct links on GitHub Pages (repo is /portfolio)
+# Correct URLs for GitHub Pages under /portfolio
 url: "https://im-karthikrajesh.github.io"
 baseurl: "/portfolio"
 
+# Social / contact
 author:
   name: "Karthik Rajesh"
   email: "karthikrajesh5@gmail.com"
   github: "https://github.com/im-karthikrajesh"
   linkedin: "https://www.linkedin.com/in/karthikrajesh05"
 
+# Default social preview image
+image: /assets/img/headshot.png
+
 # Build
 markdown: kramdown
 kramdown:
   input: GFM
 
-# SEO & Sitemap (supported by GitHub Pages)
+# SEO & Sitemap (both supported by GitHub Pages)
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Tidy output & ignore local bundles
+# Keep build tidy
 exclude:
   - vendor
   - Gemfile

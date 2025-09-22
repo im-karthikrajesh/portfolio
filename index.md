@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "{{ site.title }} — Portfolio"
+title: "Portfolio"
 ---
 
 ## Projects {#projects}

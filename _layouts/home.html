@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
 
-  <title>{{ page.title | default: site.title }}</title>
-
+  <!-- Let jekyll-seo-tag render <title>, canonical, Open Graph, etc. -->
   {% seo %}
+
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="icon" href="{{ site.logo | relative_url }}">
 
-  <!-- Schema -->
+  <!-- Person schema for richer search previews -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -22,7 +23,7 @@
   }
   </script>
 
-  <!-- Kill any theme header/footer if CSS loads late -->
+  <!-- Emergency kill-switch in case theme header flashes before CSS -->
   <style>
     .page-header, .project-name, .project-tagline, .site-header,
     header[role="banner"], header.page-header,
@@ -30,8 +31,11 @@
   </style>
 </head>
 <body>
+  <a class="sr-only" href="#main-content">Skip to content</a>
+
   <div class="wrapper">
-    <div class="shell">
+    <div class="shell"><!-- two-column grid -->
+
       <!-- LEFT RAIL (sticky): headshot above name + brief + links -->
       <aside class="left-rail">
         <div class="hero">
@@ -48,17 +52,25 @@
             <p class="links">
               <a href="{{ site.author.github }}" target="_blank" rel="noopener">
                 <!-- GitHub icon -->
-                <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 .2a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.24.49-2.71-1.08-2.71-1.08-.37-.95-.91-1.2-.91-1.2-.74-.51.06-.5.06-.5.82.06 1.25.85 1.25.85.73 1.25 1.92.89 2.39.68.07-.53.29-.89.52-1.1-1.79-.2-3.68-.9-3.68-4a3.14 3.14 0 0 1 .84-2.18 2.9 2.9 0 0 1 .08-2.16s.68-.22 2.23.84a7.7 7.7 0 0 1 4.06 0c1.55-1.06 2.23-.84 2.23-.84.3.7.32 1.5.08 2.16a3.14 3.14 0 0 1 .84 2.18c0 3.11-1.9 3.79-3.71 4 .3.26.56.78.56 1.58v2.34c0 .21.14.46.55.38A8 8 0 0 0 8 .2Z"/></svg>
+                <svg class="ico" viewBox="0 0 16 16" aria-hidden="true">
+                  <path fill="currentColor" d="M8 .2a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.24.49-2.71-1.08-2.71-1.08-.37-.95-.91-1.2-.91-1.2-.74-.51.06-.5.06-.5.82.06 1.25.85 1.25.85.73 1.25 1.92.89 2.39.68.07-.53.29-.89.52-1.1-1.79-.2-3.68-.9-3.68-4a3.14 3.14 0 0 1 .84-2.18 2.9 2.9 0 0 1 .08-2.16s.68-.22 2.23.84a7.7 7.7 0 0 1 4.06 0c1.55-1.06 2.23-.84 2.23-.84.3.7.32 1.5.08 2.16a3.14 3.14 0 0 1 .84 2.18c0 3.11-1.9 3.79-3.71 4 .3.26.56.78.56 1.58v2.34c0 .21.14.46.55.38A8 8 0 0 0 8 .2Z"/>
+                </svg>
                 GitHub
               </a>
+
               <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">
                 <!-- LinkedIn icon -->
-                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.95v5.65H9.37V9h3.4v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.56V9H3.56v11.45Z"/></svg>
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.95v5.65H9.37V9h3.4v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.56V9H3.56v11.45Z"/>
+                </svg>
                 LinkedIn
               </a>
+
               <a href="mailto:{{ site.author.email }}">
                 <!-- Email icon -->
-                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.12-8 5.33L4 8.12V6l8 5.33L20 6v2.12Z"/></svg>
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.12-8 5.33L4 8.12V6l8 5.33L20 6v2.12Z"/>
+                </svg>
                 Email
               </a>
             </p>
@@ -71,7 +83,7 @@
         </div>
       </aside>
 
-      <!-- RIGHT: top nav + content -->
+      <!-- RIGHT: sticky section nav + page content -->
       <main id="main-content" class="content">
         <nav class="nav">
           <a href="#projects">Projects</a>
@@ -95,7 +107,7 @@
     </div>
   </div>
 
-  <!-- Theme script -->
+  <!-- Theme script: saved choice -> system preference fallback -->
   <script>
   (function () {
     const KEY = 'theme';
