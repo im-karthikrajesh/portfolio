@@ -56,46 +56,61 @@ title: "Portfolio"
 
 ## Experience {#experience}
 
-**Senior Solution Engineer, IBS Software** — _Full-time • Apr 2021 – Aug 2024 (3 yrs 5 mos) • Ernakulam, Kerala, India • Hybrid_  
-_Client: Expedia Group_
+<!-- ===== Current role first ===== -->
+<div class="xp-card">
+  <h3>Project Developer, EMtel Limited</h3>
+  <p class="xp-meta">
+    <span class="xp-chip">Full-time</span> Sep 2025 – Present
+    <span class="xp-dot">•</span>
+    <span class="xp-chip">Part-time</span> Jan 2025 – Sep 2025
+  </p>
 
-- Spearheaded the migration of the **Runtime Compute Platform (RCP)** for Airmate (flight operations), delivering optimized infrastructure to support new BI capabilities.  
-- Bridged IT capabilities with business objectives, consultatively guiding stakeholders to implement **data-driven decision-making** through the development of insights platforms.  
-- Led testing and integration for Airmate enhancements, significantly improving the **availability, quality, and scalability** of flight operations data.  
-- Drove multiple high-impact initiatives, applying **analytical modeling** and **data visualizations** to optimize configurations, bolster scalability, and streamline flight-related processes.  
-- **Awards:** Team Champ (successful RCP migration); Debutant; Passionate & Persistent (Virtual) for technical leadership and transformation impact.  
-- **Progression:** Promoted from Solution Engineer to **Senior Solution Engineer** for strong stakeholder understanding, solution ideation, and measurable delivery.
+  <ul class="xp-points">
+    <li>Led the integration of <strong>Zoho One ↔ Tekton Zoey</strong>, unifying CRM, billing and operations—bridging <strong>data, events and workflows</strong> across platforms.</li>
+    <li>Shipped custom <strong>Deluge</strong> functions, webhooks and REST integrations (Zoho CRM/Books/Campaigns) backed by <strong>MySQL on Plesk</strong>; designed for reliability, auditability and low maintenance.</li>
+    <li>Built automation layers for <strong>lead routing, campaign engagement, account creation, call scheduling</strong>; standardized error handling and observability for faster troubleshooting.</li>
+    <li>Developed <strong>predictive signals</strong> to score likelihood-to-stay and intent; surfaced results in Zoho for targeted outreach and tiered follow-ups.</li>
+    <li>Partnered with business users to capture requirements, prototype quickly and iterate to fit real-world workflows; delivered <strong>training and SOPs</strong> to drive adoption.</li>
+    <li>Implemented secure data flows and schema design in <strong>MySQL</strong>, optimized queries and created reusable modules to accelerate future projects.</li>
+    <li>Maintained <strong>source control and documentation in GitHub</strong> for reproducible releases and peer review.</li>
+  </ul>
 
-<details>
-<summary><strong>Core stack & tools</strong> (click to expand)</summary>
+  <details>
+    <summary><strong>Core stack & tools</strong> (click to expand)</summary>
+    <p><strong>Platforms:</strong> Zoho One, Tekton Zoey, Plesk<br/>
+    <strong>Languages:</strong> Deluge, Python, SQL (MySQL), PHP, HTML/CSS/JavaScript<br/>
+    <strong>Integration:</strong> REST APIs, webhooks, OAuth, error/exception handling, idempotency<br/>
+    <strong>DevOps/Tools:</strong> GitHub, logging/monitoring, documentation & SOPs<br/>
+    <strong>Business:</strong> Stakeholder management, requirements elicitation, user training, process redesign</p>
+  </details>
+</div>
 
-**Full-Stack & Languages:** Core Java, Kotlin, Python, JavaScript, React.js  
-**Cloud & DevOps:** AWS, Kubernetes, Docker, Jenkins, Spinnaker, GitHub Actions  
-**Data & DB:** SQL  
-**Practices:** Project management, problem solving, business analysis, GitHub/CI/CD
-</details>
+<div class="xp-card">
+  <h3>Senior Solution Engineer, IBS Software</h3>
+  <p class="xp-meta">
+    Full-time • Apr 2021 – Aug 2024 (3 yrs 5 mos)
+    <span class="xp-dot">•</span> Ernakulam, Kerala, India
+    <span class="xp-dot">•</span> Hybrid
+  </p>
+  <p class="muted"><em>Client: Expedia Group</em></p>
 
-<br/>
+  <ul class="xp-points">
+    <li>Spearheaded migration of the <strong>Runtime Compute Platform (RCP)</strong> for Airmate (flight operations), delivering optimized infrastructure to support new BI capabilities.</li>
+    <li>Bridged IT capabilities with business objectives; guided stakeholders to implement <strong>data-driven decision-making</strong> via insights platforms.</li>
+    <li>Led testing and integration for Airmate enhancements, improving <strong>availability, quality and scalability</strong> of flight operations data.</li>
+    <li>Drove high-impact initiatives; applied <strong>analytical modelling</strong> and <strong>data visualisations</strong> to optimize configurations, bolster scalability and streamline flight-related processes.</li>
+    <li><strong>Awards:</strong> Team Champ (successful RCP migration); Debutant; Passionate & Persistent (Virtual) for technical leadership and transformation impact.</li>
+    <li><strong>Progression:</strong> Promoted from Solution Engineer to <strong>Senior Solution Engineer</strong> for stakeholder understanding, solution ideation and measurable delivery.</li>
+  </ul>
 
-**Project Developer, EMtel Limited** — _Part-Time → Full-Time • Jan 2025 – Sep 2025 (Part-Time); Sep 2025 – Present (Full-Time)_  
-
-- Led the integration of **Zoho One ↔ Tekton Zoey**, unifying CRM, billing, and operations—bridging **data, events, and workflows** across platforms.  
-- Designed and shipped custom **Deluge** functions, webhooks, and REST integrations (Zoho CRM/Books/Campaigns) with **MySQL on Plesk**, ensuring reliability, auditability, and low maintenance.  
-- Built automation layers for **lead routing, campaign engagement, account creation, call scheduling**; standardized error handling and observability for faster troubleshooting.  
-- Developed **predictive signals** to score likelihood-to-stay and interest intent; embedded outputs into Zoho for targeted outreach and tiered follow-ups.  
-- Partnered with business users to capture requirements, prototype rapidly, and iterate to fit real-world workflows; delivered **training and SOPs** to drive adoption.  
-- Implemented secure data flows and schema design in **MySQL**, optimized queries, and created reusable modules to accelerate future projects.  
-- Maintained **source control and documentation in GitHub**, enabling reproducible releases and peer review.
-
-<details>
-<summary><strong>Core stack & tools</strong> (click to expand)</summary>
-
-**Platforms:** Zoho One, Tekton Zoey, Plesk  
-**Languages:** Deluge, Python, SQL (MySQL), PHP, HTML/CSS/JavaScript  
-**Integration:** REST APIs, webhooks, OAuth, error/exception handling, idempotency  
-**DevOps/Tools:** GitHub, logging/monitoring, documentation & SOPs  
-**Business:** Stakeholder management, requirements elicitation, user training, process redesign
-</details>
+  <details>
+    <summary><strong>Core stack & tools</strong> (click to expand)</summary>
+    <p><strong>Full-Stack & Languages:</strong> Core Java, Kotlin, Python, JavaScript, React.js<br/>
+    <strong>Cloud & DevOps:</strong> AWS, Kubernetes, Docker, Jenkins, Spinnaker, GitHub Actions<br/>
+    <strong>Data & DB:</strong> SQL<br/>
+    <strong>Practices:</strong> Project management, problem solving, business analysis, GitHub/CI/CD</p>
+  </details>
+</div>
 
 ---
 
