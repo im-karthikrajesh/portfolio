@@ -192,6 +192,7 @@ img { max-width: 100%; height: auto; }
 .nav a.active {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+  background: color-mix(in oklab, var(--accent) 14%, var(--card-bg));
 }
 
 /* Theme toggle button */
@@ -319,14 +320,33 @@ details[open] summary::before { transform: rotate(90deg); }
   border: 1px solid var(--border-soft);
 }
 
-/* Dark-mode defensive color fixes */
-:root[data-theme="dark"] .left-rail .hero h1 { color: var(--text); }
+/* === Dark-mode readability sweep === */
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4,
+:root[data-theme="dark"] h5,
+:root[data-theme="dark"] h6 { color: var(--text); }
+
+:root[data-theme="dark"] strong { color: var(--text); }
+
+/* Project/experience titles */
+:root[data-theme="dark"] .card h3,
+:root[data-theme="dark"] .xp-card h3 { color: var(--text); }
+
+/* Education labels like "MSc Business Analytics", "Modules covered:" */
+:root[data-theme="dark"] .content p strong { color: var(--text); }
+
+/* "Open to:" line – keep fully readable in dark */
+:root[data-theme="dark"] .open-to { color: var(--text); }
+.open-to strong { color: var(--text); }
+
+/* Details blocks and text inside */
 :root[data-theme="dark"] details,
 :root[data-theme="dark"] details p,
-:root[data-theme="dark"] details strong,
-:root[data-theme="dark"] .xp-card strong { color: var(--text); }
+:root[data-theme="dark"] details strong { color: var(--text); }
 
-/* Keep muted text readable on very dark cards */
+/* Keep meta/muted readable */
 :root[data-theme="dark"] .muted,
 :root[data-theme="dark"] .xp-meta { color: var(--text-muted); }
 

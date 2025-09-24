@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="icon" href="{{ site.logo | relative_url }}">
+
   <!-- Emergency kill-switch in case theme header flashes before CSS -->
   <style>
     .page-header, .project-name, .project-tagline, .site-header,
@@ -84,7 +85,7 @@
 
       <!-- RIGHT: sticky section nav + page content -->
       <main id="main-content" class="content">
-        <nav class="nav">
+        <nav class="nav" role="navigation" aria-label="Section navigation">
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
@@ -130,46 +131,68 @@
   })();
   </script>
 
-  <!-- Scrollspy: highlights current section link in the sticky nav -->
+  <!-- Scrollspy: robust highlight for all sections (scroll + click + edge cases) -->
   <script>
   (function () {
     const ids = ['projects','experience','education','contact'];
-    const headings = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
     const nav = document.querySelector('.nav');
+
+    // id -> <a> element map
     const links = Object.fromEntries(
       ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')])
     );
 
     function setActive(id) {
-      for (const a of Object.values(links)) if (a) a.classList.remove('active');
-      if (links[id]) links[id].classList.add('active');
+      Object.values(links).forEach(a => {
+        if (!a) return;
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      });
+      if (links[id]) {
+        links[id].classList.add('active');
+        links[id].setAttribute('aria-current', 'page');
+      }
     }
 
-    // Immediate visual feedback when clicking nav items
+    // Immediate visual feedback on click (smooth-scroll handled by CSS)
     Object.entries(links).forEach(([id, a]) => {
       if (!a) return;
       a.addEventListener('click', () => setActive(id));
     });
 
-    // Determine current section by scroll position (handles sticky nav & short last section)
     function updateByScroll() {
-      const topOffset = (nav?.offsetHeight || 0) + 12; // 12px breathing room
-      const y = window.scrollY + topOffset;
+      const navH = (nav?.offsetHeight || 0);
+      const checkpoint = navH + 18; // px below top of viewport
 
-      let curId = ids[0];
-      for (const h of headings) {
-        if (h.offsetTop <= y) curId = h.id;
-      }
-      // When at (or very near) the bottom, force the last section
+      // When at the very bottom, force "the last section"
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2) {
-        curId = ids[ids.length - 1];
+        setActive('contact');
+        return;
       }
-      setActive(curId);
+
+      let current = ids[0];
+      for (const sec of sections) {
+        const r = sec.getBoundingClientRect();
+        // Active when the checkpoint lies within the section
+        if (r.top <= checkpoint && r.bottom >= checkpoint) {
+          current = sec.id;
+          break;
+        }
+        // When between sections while scrolling up, keep the last passed
+        if (r.top - checkpoint < 0) current = sec.id;
+      }
+      setActive(current);
     }
 
     window.addEventListener('scroll', updateByScroll, { passive: true });
     window.addEventListener('resize', updateByScroll);
-    window.addEventListener('load', updateByScroll);
+    window.addEventListener('load', () => {
+      // If a hash is present on load, honor it; otherwise compute by position
+      const hashId = location.hash?.replace('#','');
+      if (ids.includes(hashId)) setActive(hashId);
+      updateByScroll();
+    });
     window.addEventListener('hashchange', updateByScroll);
   })();
   </script>
