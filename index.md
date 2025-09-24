@@ -70,7 +70,7 @@ title: "Portfolio"
     <li>Shipped custom <strong>Deluge</strong> functions, webhooks and REST integrations (Zoho CRM/Books/Campaigns) backed by <strong>MySQL on Plesk</strong>; designed for reliability, auditability and low maintenance.</li>
     <li>Built automation layers for <strong>lead routing, campaign engagement, account creation, call scheduling</strong>; standardized error handling and observability for faster troubleshooting.</li>
     <li>Developed <strong>predictive signals</strong> to score likelihood-to-stay and intent; surfaced results in Zoho for targeted outreach and tiered follow-ups.</li>
-    <li>Partnered with business users to capture requirements, prototype quickly and iterate to fit real-world workflows; delivered <strong>training and SOPs</strong> to drive adoption.</li>
+    <li>Partnered with business users and stakeholders to capture requirements, prototype quickly and iterate to fit real-world workflows; delivered <strong>training and SOPs</strong> to drive adoption.</li>
     <li>Implemented secure data flows and schema design in <strong>MySQL</strong>, optimized queries and created reusable modules to accelerate future projects.</li>
     <li>Maintained <strong>source control and documentation in GitHub</strong> for reproducible releases and peer review.</li>
   </ul>

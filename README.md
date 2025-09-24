@@ -14,6 +14,8 @@ A career-focused portfolio hosted on GitHub Pages (Jekyll with the Minimal theme
 ├─ _config.yml               # Site settings (title, description, author links)
 ├─ _data/
 │  └─ projects.yml           # Project cards (title, links, tech, highlights)
+├─ _layouts/
+│  └─ home.html
 ├─ assets/
 │  ├─ img/
 │  │  ├─ headshot.png

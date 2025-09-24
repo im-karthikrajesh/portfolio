@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
 
-  <!-- Let jekyll-seo-tag render <title>, canonical, Open Graph, etc. -->
+  <!-- jekyll-seo-tag renders <title>, canonical, Open Graph, etc. -->
   {% seo %}
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="icon" href="{{ site.logo | relative_url }}">
+  <!-- Emergency kill-switch in case theme header flashes before CSS -->
+  <style>
+    .page-header, .project-name, .project-tagline, .site-header,
+    header[role="banner"], header.page-header,
+    footer.site-footer, footer[role="contentinfo"] { display:none !important; }
+  </style>
 
   <!-- Person schema for richer search previews -->
   <script type="application/ld+json">
@@ -22,13 +28,6 @@
     "sameAs": ["{{ site.author.github }}", "{{ site.author.linkedin }}"]
   }
   </script>
-
-  <!-- Emergency kill-switch in case theme header flashes before CSS -->
-  <style>
-    .page-header, .project-name, .project-tagline, .site-header,
-    header[role="banner"], header.page-header,
-    footer.site-footer, footer[role="contentinfo"] { display:none !important; }
-  </style>
 </head>
 <body>
   <a class="sr-only" href="#main-content">Skip to content</a>
@@ -128,6 +127,31 @@
         btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
       });
     }, { once: true });
+  })();
+  </script>
+
+  <!-- Scrollspy: highlights current section link in the sticky nav -->
+  <script>
+  (function () {
+    const ids = ['projects','experience','education','contact'];
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const links = new Map(
+      Array.from(document.querySelectorAll('.nav a'))
+        .map(a => [a.getAttribute('href').slice(1), a])
+    );
+    if (!sections.length) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(a => a.classList.remove('active'));
+          const link = links.get(entry.target.id);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 });
+
+    sections.forEach(s => io.observe(s));
   })();
   </script>
 </body>
