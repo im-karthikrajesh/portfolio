@@ -21,7 +21,7 @@ footer[role="contentinfo"] {
 /* Wider wrapper for better breathing room */
 .wrapper { max-width: 1100px; padding: 0 22px; }
 
-/* Let browsers know we support both schemes (form controls, etc.) */
+/* Let browsers know both schemes are supported (affects form controls) */
 :root { color-scheme: light dark; }
 
 /* =========================
@@ -68,11 +68,15 @@ footer[role="contentinfo"] {
   --border-soft: color-mix(in oklab, #000 8%, transparent);
 }
 :root[data-theme="dark"] {
+  /* Slightly lighter surfaces + stronger muted for readability */
   --page-bg: #0a0f18;
-  --bg-soft: #0f1720;
-  --card-bg: #0b1220;
+  --bg-soft: #101a23;       /* was #0f1720 */
+  --card-bg: #0d1424;       /* was #0b1220 */
   --text: #e5e7eb;
-  --text-muted: #98a2b3;
+  --text-muted: #c0c9d6;    /* was #98a2b3 */
+  /* Brighten links a touch on dark */
+  --accent: #22c6bd;
+  --accent-strong: #19a9a0;
   --shadow: 0 8px 24px rgba(0,0,0,.5);
   --shadow-hover: 0 12px 32px rgba(0,0,0,.6);
   --border-soft: color-mix(in oklab, #fff 10%, transparent);
@@ -108,6 +112,11 @@ p.muted, .muted { color: var(--text-muted); }
 hr.footnote { margin: 40px 0; }
 :where(h2[id], h3[id], h4[id]) { scroll-margin-top: 84px; }
 img { max-width: 100%; height: auto; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
 
 /* =========================
    Hero (generic)
@@ -167,7 +176,7 @@ img { max-width: 100%; height: auto; }
   position: sticky; top: 0; z-index: 30;
   display: flex; gap: 12px; margin: 16px 0 8px; padding: 10px 6px; flex-wrap: wrap;
   backdrop-filter: blur(6px);
-  background: var(--card-bg);
+  background: var(--card-bg); /* fallback */
   /* If browser supports color-mix, add subtle translucency */
   background: color-mix(in oklab, var(--card-bg) 92%, transparent);
   border-radius: 12px; box-shadow: var(--shadow);
@@ -178,6 +187,12 @@ img { max-width: 100%; height: auto; }
   transition: transform .15s ease, box-shadow .15s ease;
 }
 .nav a:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+
+/* Active section (scrollspy) */
+.nav a.active {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 /* Theme toggle button */
 .theme-toggle {
@@ -222,7 +237,12 @@ img { max-width: 100%; height: auto; }
 .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
 .card h3 { margin: 6px 0 6px; line-height: 1.3; }
 .card .thumb {
-  width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 10px;
+  width: 100%;
+  height: auto;                 /* let aspect-ratio control height */
+  aspect-ratio: 16 / 9;         /* consistent crop window */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
   background: var(--bg-soft);
 }
 .card ul { margin: 8px 0 8px 1rem; padding: 0; }
@@ -231,6 +251,7 @@ img { max-width: 100%; height: auto; }
 .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
 .tag {
   font-size: .8rem; background: var(--bg-soft); padding: 4px 8px; border-radius: 999px; color: #0f172a;
+  border: 1px solid var(--border-soft);
 }
 :root[data-theme="dark"] .tag { color: var(--text); }
 
@@ -261,6 +282,44 @@ details[open] summary::before { transform: rotate(90deg); }
 .content { min-width: 0; } /* prevent overflow in code blocks etc. */
 
 /* =========================
+   Experience cards (content)
+   ========================= */
+.xp-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 14px 0;
+  box-shadow: var(--shadow);
+  transition: box-shadow .15s ease, transform .15s ease, background .2s ease;
+}
+.xp-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.xp-card h3 { margin: 2px 0 4px; line-height: 1.3; }
+
+.xp-meta {
+  color: var(--text-muted);
+  font-size: .95rem;
+  margin: 0 0 6px;
+}
+.xp-dot { margin: 0 6px; color: var(--text-muted); }
+
+.xp-points { margin-left: 1rem; }
+.xp-points li { margin: 6px 0; }
+:root[data-theme="dark"] .xp-points li { margin: 8px 0; } /* a tad more space on dark */
+
+/* Small pill for employment type, e.g., Full-time/Part-time */
+.xp-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  color: var(--text);
+  font-weight: 700;
+  font-size: .82rem;
+  line-height: 1.6;
+  border: 1px solid var(--border-soft);
+}
+
+/* =========================
    Mobile
    ========================= */
 @media (max-width: 980px) {
@@ -280,38 +339,4 @@ details[open] summary::before { transform: rotate(90deg); }
 @media print {
   .nav, .tags, .card .thumb { display: none !important; }
   .card, .hero { box-shadow: none !important; }
-}
-
-/* ===== Experience cards ===== */
-.xp-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin: 14px 0;
-  box-shadow: var(--shadow);
-  transition: box-shadow .15s ease, transform .15s ease;
-}
-.xp-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
-.xp-card h3 { margin: 2px 0 4px; line-height: 1.3; }
-
-.xp-meta {
-  color: var(--text-muted);
-  font-size: .95rem;
-  margin: 0 0 6px;
-}
-.xp-dot { margin: 0 6px; color: var(--text-muted); }
-
-.xp-points { margin-left: 1rem; }
-.xp-points li { margin: 6px 0; }
-
-/* Small pill for employment type, e.g., Full-time/Part-time */
-.xp-chip {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: var(--bg-soft);
-  color: inherit;
-  font-weight: 700;
-  font-size: .82rem;
-  line-height: 1.6;
 }
