@@ -130,7 +130,7 @@
   })();
   </script>
 
-  <!-- Robust scrollspy: works for first/last sections and on click -->
+  <!-- Scrollspy: highlights current section link in the sticky nav -->
   <script>
   (function () {
     const ids = ['projects','experience','education','contact'];
@@ -160,7 +160,7 @@
       for (const h of headings) {
         if (h.offsetTop <= y) curId = h.id;
       }
-      // If we're at (or very near) the bottom, force the last section
+      // When at (or very near) the bottom, force the last section
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2) {
         curId = ids[ids.length - 1];
       }
