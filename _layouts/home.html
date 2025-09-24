@@ -134,24 +134,43 @@
   <script>
   (function () {
     const ids = ['projects','experience','education','contact'];
-    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
-    const links = new Map(
-      Array.from(document.querySelectorAll('.nav a'))
-        .map(a => [a.getAttribute('href').slice(1), a])
+    const headings = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const nav = document.querySelector('.nav');
+    const links = Object.fromEntries(
+      ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')])
     );
-    if (!sections.length) return;
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          links.forEach(a => a.classList.remove('active'));
-          const link = links.get(entry.target.id);
-          if (link) link.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 });
+    function setActive(id) {
+      for (const a of Object.values(links)) if (a) a.classList.remove('active');
+      if (links[id]) links[id].classList.add('active');
+    }
 
-    sections.forEach(s => io.observe(s));
+    // Immediate visual feedback when clicking nav items
+    Object.entries(links).forEach(([id, a]) => {
+      if (!a) return;
+      a.addEventListener('click', () => setActive(id));
+    });
+
+    // Determine current section by scroll position (handles sticky nav & short last section)
+    function updateByScroll() {
+      const topOffset = (nav?.offsetHeight || 0) + 12; // 12px breathing room
+      const y = window.scrollY + topOffset;
+
+      let curId = ids[0];
+      for (const h of headings) {
+        if (h.offsetTop <= y) curId = h.id;
+      }
+      // When at (or very near) the bottom, force the last section
+      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2) {
+        curId = ids[ids.length - 1];
+      }
+      setActive(curId);
+    }
+
+    window.addEventListener('scroll', updateByScroll, { passive: true });
+    window.addEventListener('resize', updateByScroll);
+    window.addEventListener('load', updateByScroll);
+    window.addEventListener('hashchange', updateByScroll);
   })();
   </script>
 </body>

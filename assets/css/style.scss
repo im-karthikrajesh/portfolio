@@ -319,6 +319,17 @@ details[open] summary::before { transform: rotate(90deg); }
   border: 1px solid var(--border-soft);
 }
 
+/* Dark-mode defensive color fixes */
+:root[data-theme="dark"] .left-rail .hero h1 { color: var(--text); }
+:root[data-theme="dark"] details,
+:root[data-theme="dark"] details p,
+:root[data-theme="dark"] details strong,
+:root[data-theme="dark"] .xp-card strong { color: var(--text); }
+
+/* Keep muted text readable on very dark cards */
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] .xp-meta { color: var(--text-muted); }
+
 /* =========================
    Mobile
    ========================= */
