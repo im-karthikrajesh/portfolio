@@ -131,80 +131,64 @@
   })();
   </script>
 
-  <!-- Scrollspy: robust & sticky-nav aware (works for all sections & on click) -->
+  <!-- Scrollspy: sticky-nav aware; works for all sections on click & scroll -->
   <script>
   (function () {
     const ids = ['projects','experience','education','contact'];
     const nav = document.querySelector('.nav');
     const links = Object.fromEntries(ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')]));
-    const headings = ids
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-
+    const headings = ids.map(id => document.getElementById(id)).filter(Boolean);
     if (!nav || headings.length === 0) return;
 
     function setActive(id) {
-      Object.values(links).forEach(a => {
+      Object.entries(links).forEach(([k, a]) => {
         if (!a) return;
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-        if (a.classList.contains('active')) {
-          a.setAttribute('aria-current', 'true');
-        } else {
-          a.removeAttribute('aria-current');
-        }
+        const on = (k === id);
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
       });
     }
 
-    // Read the *computed* scroll-margin-top for an element (in px number)
-    function getScrollMarginTop(el) {
+    function scrollMarginTop(el) {
       const v = getComputedStyle(el).scrollMarginTop || '0';
       return parseFloat(v) || 0;
     }
 
-    // On click: set active immediately, then reconcile after the anchor jump
+    // Precompute document breakpoints: offsetTop - scrollMarginTop
+    let tops = [];
+    function recomputeTops() {
+      tops = headings.map(h => h.offsetTop - scrollMarginTop(h));
+    }
+
+    // On click: set active immediately, then reconcile after the jump
     Object.entries(links).forEach(([id, a]) => {
       if (!a) return;
       a.addEventListener('click', () => {
         setActive(id);
-        requestAnimationFrame(() => {
-          // After the browser performs the scroll, recompute
-          setTimeout(updateByScroll, 50);
-        });
+        requestAnimationFrame(() => setTimeout(updateByScroll, 60));
       });
     });
 
     function updateByScroll() {
-      // Use viewport positions; compensate per-heading with its own scroll-margin-top
-      let current = ids[0];
-
-      for (const h of headings) {
-        const rect = h.getBoundingClientRect();
-        const sm = getScrollMarginTop(h);   // e.g., 84px in your CSS
-        // Treat section as "active" once its top crosses its own scroll-margin band
-        if ((rect.top - sm) <= 1) {
-          current = h.id;
-        } else {
-          // headings are in document order; once one hasn't reached its margin, stop
-          break;
-        }
+      // Choose section whose breakpoint has been crossed by the reading line
+      const y = window.scrollY + (nav.offsetHeight || 0) + 2;
+      // Find the last index whose top <= y
+      let idx = 0;
+      for (let i = 0; i < tops.length; i++) {
+        if (y >= tops[i]) idx = i; else break;
       }
-
-      // Near the very bottom, force Contact
-      if ((window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 2)) {
-        current = ids[ids.length - 1];
-      }
-
-      setActive(current);
+      setActive(headings[idx].id);
     }
 
-    // Keep the spy fresh
+    // Initialize & bind
+    function init() {
+      recomputeTops();
+      updateByScroll();
+    }
+    window.addEventListener('load', init, { once: true });
+    window.addEventListener('resize', () => { recomputeTops(); updateByScroll(); }, { passive: true });
     window.addEventListener('scroll', updateByScroll, { passive: true });
-    window.addEventListener('resize', updateByScroll);
-    window.addEventListener('load', updateByScroll);
     window.addEventListener('hashchange', updateByScroll);
-
-    // Initial paint
-    updateByScroll();
   })();
   </script>
 </body>
