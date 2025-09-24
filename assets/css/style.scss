@@ -350,6 +350,29 @@ details[open] summary::before { transform: rotate(90deg); }
 :root[data-theme="dark"] .muted,
 :root[data-theme="dark"] .xp-meta { color: var(--text-muted); }
 
+/* Make the active nav pill obvious (light & dark) */
+.nav a.active{
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  background: color-mix(in oklab, var(--accent) 14%, var(--card-bg));
+  font-weight: 700;
+}
+
+/* Reusable button (used in Awards 'View awards') */
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.55rem .9rem; border-radius:12px; font-weight:700;
+  background: var(--accent); color:#fff; text-decoration:none;
+  box-shadow: var(--shadow); border: 1px solid color-mix(in oklab, #000 8%, transparent);
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+}
+.btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+.btn:focus-visible{ outline:3px solid var(--ring); outline-offset:2px; }
+:root[data-theme="dark"] .btn{
+  background: color-mix(in oklab, var(--accent) 88%, #000);
+  border-color: color-mix(in oklab, #fff 12%, transparent);
+}
+
 /* =========================
    Mobile
    ========================= */
