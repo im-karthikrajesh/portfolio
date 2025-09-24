@@ -116,21 +116,64 @@ title: "Portfolio"
 
 ## Education {#education}
 
-**MSc Business Analytics**, University of Nottingham (UK)
+<div class="xp-card">
+  <h3>MSc Business Analytics, University of Nottingham (UK)</h3>
+  <p class="xp-meta">Sep 2024 – 2025</p>
 
-**Modules covered:**
-- Machine Learning and Predictive Analytics  
-- Foundational Business Analytics  
-- Analytics Specializations and Applications  
-- Data at Scale: Management, Processing, Visualization  
-- Leading Big Data Business Projects  
-- Supply Chain Planning and Management  
-- Digital Marketing
+  <p><span class="xp-chip">Scholarship</span> <strong>Postgraduate Excellence Award</strong></p>
+
+  <details>
+    <summary><strong>Modules covered</strong></summary>
+    <ul>
+      <li>Machine Learning and Predictive Analytics</li>
+      <li>Foundational Business Analytics</li>
+      <li>Analytics Specializations and Applications</li>
+      <li>Data at Scale: Management, Processing, Visualization</li>
+      <li>Leading Big Data Business Projects</li>
+      <li>Supply Chain Planning and Management</li>
+      <li>Digital Marketing</li>
+    </ul>
+  </details>
+</div>
+
+<div class="xp-card">
+  <h3>Bachelor’s in Electronics & Communication Engineering, Adi Shankara Institute of Engineering and Technology (India)</h3>
+  <p class="xp-meta">Aug 2016 – 2020</p>
+
+  <details>
+    <summary><strong>Capstone project: Kinesics Articulation</strong></summary>
+    <p>
+      Built a microprocessor-driven system in Python to translate sensor-captured gestures
+      into audible speech, supporting communication for deaf and hard-of-hearing users.
+      Also designed a mobile text-to-speech app (Android Studio + Flutter) for accessible,
+      real-time communication. Demonstrated in schools and deaf community facilities, earning
+      recognition from colleges and universities.
+    </p>
+  </details>
+</div>
 
 ---
 
-## Contact {#contact}
+## Honors & Awards {#awards}
 
-- **Email:** <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>  
-- **LinkedIn:** <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">{{ site.author.linkedin }}</a>  
-- **GitHub:** <a href="{{ site.author.github }}" target="_blank" rel="noopener">{{ site.author.github }}</a>
+<div class="xp-card">
+  <h3>Recognitions</h3>
+  <ul class="xp-points">
+    <li><strong>Postgraduate Excellence Award Scholarship</strong> — University of Nottingham</li>
+    <li><strong>Team Champ Award</strong> — IBS Software</li>
+    <li><strong>Passionate Virtual Award</strong> — IBS Software</li>
+    <li><strong>Perseverant Virtual Award</strong> — IBS Software</li>
+    <li><strong>Debutant Award</strong> — IBS Software</li>
+    <li><strong>ACCESS Project Presentation Certificate</strong> — Adi Shankara Institute of Engineering and Technology</li>
+  </ul>
+
+  <p>
+    <a class="btn" href="https://www.linkedin.com/in/karthikrajesh05/details/honors/" target="_blank" rel="noopener">
+      View awards
+      <!-- small external-link arrow -->
+      <svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/>
+      </svg>
+    </a>
+  </p>
+</div>

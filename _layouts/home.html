@@ -89,7 +89,7 @@
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
+          <a href="#awards">Awards</a>
 
           <button id="theme-toggle" class="theme-toggle" type="button"
                   aria-live="polite" aria-label="Toggle dark or light theme">
@@ -131,14 +131,18 @@
   })();
   </script>
 
-  <!-- Scrollspy: sticky-nav aware; works for all sections on click & scroll -->
+  <!-- Scrollspy: robust, highlights ALL sections (click + scroll), using viewport "reading line" -->
   <script>
   (function () {
-    const ids = ['projects','experience','education','contact'];
+    const ids = ['projects','experience','education','awards'];
     const nav = document.querySelector('.nav');
-    const links = Object.fromEntries(ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')]));
+    if (!nav) return;
+
+    const links = Object.fromEntries(
+      ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')])
+    );
     const headings = ids.map(id => document.getElementById(id)).filter(Boolean);
-    if (!nav || headings.length === 0) return;
+    if (headings.length === 0) return;
 
     function setActive(id) {
       Object.entries(links).forEach(([k, a]) => {
@@ -149,42 +153,41 @@
       });
     }
 
-    function scrollMarginTop(el) {
-      const v = getComputedStyle(el).scrollMarginTop || '0';
-      return parseFloat(v) || 0;
-    }
-
-    // Precompute document breakpoints: offsetTop - scrollMarginTop
+    // Precompute section tops
     let tops = [];
     function recomputeTops() {
-      tops = headings.map(h => h.offsetTop - scrollMarginTop(h));
+      tops = headings.map(h => h.offsetTop);
     }
 
-    // On click: set active immediately, then reconcile after the jump
+    // Click: set active immediately, then reconcile after scroll
     Object.entries(links).forEach(([id, a]) => {
       if (!a) return;
       a.addEventListener('click', () => {
         setActive(id);
-        requestAnimationFrame(() => setTimeout(updateByScroll, 60));
+        requestAnimationFrame(() => setTimeout(updateByScroll, 80));
       });
     });
 
     function updateByScroll() {
-      // Choose section whose breakpoint has been crossed by the reading line
-      const y = window.scrollY + (nav.offsetHeight || 0) + 2;
-      // Find the last index whose top <= y
+      // Use a "reading line" ~ 33% down the viewport for stable selection.
+      const y = window.scrollY + (window.innerHeight * 0.33);
+
+      // Find the section whose [top, nextTop) range contains y
       let idx = 0;
       for (let i = 0; i < tops.length; i++) {
-        if (y >= tops[i]) idx = i; else break;
+        const start = tops[i];
+        const end = (i < tops.length - 1) ? tops[i + 1] : Number.POSITIVE_INFINITY;
+        if (y >= start && y < end) { idx = i; break; }
+        if (y >= tops[tops.length - 1]) { idx = tops.length - 1; } // bottom edge case
       }
       setActive(headings[idx].id);
     }
 
-    // Initialize & bind
     function init() {
       recomputeTops();
       updateByScroll();
     }
+
     window.addEventListener('load', init, { once: true });
     window.addEventListener('resize', () => { recomputeTops(); updateByScroll(); }, { passive: true });
     window.addEventListener('scroll', updateByScroll, { passive: true });
