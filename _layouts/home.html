@@ -131,69 +131,80 @@
   })();
   </script>
 
-  <!-- Scrollspy: robust highlight for all sections (scroll + click + edge cases) -->
+  <!-- Scrollspy: robust & sticky-nav aware (works for all sections & on click) -->
   <script>
   (function () {
     const ids = ['projects','experience','education','contact'];
-    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
     const nav = document.querySelector('.nav');
+    const links = Object.fromEntries(ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')]));
+    const headings = ids
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
 
-    // id -> <a> element map
-    const links = Object.fromEntries(
-      ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')])
-    );
+    if (!nav || headings.length === 0) return;
 
     function setActive(id) {
       Object.values(links).forEach(a => {
         if (!a) return;
-        a.classList.remove('active');
-        a.removeAttribute('aria-current');
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        if (a.classList.contains('active')) {
+          a.setAttribute('aria-current', 'true');
+        } else {
+          a.removeAttribute('aria-current');
+        }
       });
-      if (links[id]) {
-        links[id].classList.add('active');
-        links[id].setAttribute('aria-current', 'page');
-      }
     }
 
-    // Immediate visual feedback on click (smooth-scroll handled by CSS)
+    // Read the *computed* scroll-margin-top for an element (in px number)
+    function getScrollMarginTop(el) {
+      const v = getComputedStyle(el).scrollMarginTop || '0';
+      return parseFloat(v) || 0;
+    }
+
+    // On click: set active immediately, then reconcile after the anchor jump
     Object.entries(links).forEach(([id, a]) => {
       if (!a) return;
-      a.addEventListener('click', () => setActive(id));
+      a.addEventListener('click', () => {
+        setActive(id);
+        requestAnimationFrame(() => {
+          // After the browser performs the scroll, recompute
+          setTimeout(updateByScroll, 50);
+        });
+      });
     });
 
     function updateByScroll() {
-      const navH = (nav?.offsetHeight || 0);
-      const checkpoint = navH + 18; // px below top of viewport
-
-      // When at the very bottom, force "the last section"
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2) {
-        setActive('contact');
-        return;
-      }
-
+      // Use viewport positions; compensate per-heading with its own scroll-margin-top
       let current = ids[0];
-      for (const sec of sections) {
-        const r = sec.getBoundingClientRect();
-        // Active when the checkpoint lies within the section
-        if (r.top <= checkpoint && r.bottom >= checkpoint) {
-          current = sec.id;
+
+      for (const h of headings) {
+        const rect = h.getBoundingClientRect();
+        const sm = getScrollMarginTop(h);   // e.g., 84px in your CSS
+        // Treat section as "active" once its top crosses its own scroll-margin band
+        if ((rect.top - sm) <= 1) {
+          current = h.id;
+        } else {
+          // headings are in document order; once one hasn't reached its margin, stop
           break;
         }
-        // When between sections while scrolling up, keep the last passed
-        if (r.top - checkpoint < 0) current = sec.id;
       }
+
+      // Near the very bottom, force Contact
+      if ((window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 2)) {
+        current = ids[ids.length - 1];
+      }
+
       setActive(current);
     }
 
+    // Keep the spy fresh
     window.addEventListener('scroll', updateByScroll, { passive: true });
     window.addEventListener('resize', updateByScroll);
-    window.addEventListener('load', () => {
-      // If a hash is present on load, honor it; otherwise compute by position
-      const hashId = location.hash?.replace('#','');
-      if (ids.includes(hashId)) setActive(hashId);
-      updateByScroll();
-    });
+    window.addEventListener('load', updateByScroll);
     window.addEventListener('hashchange', updateByScroll);
+
+    // Initial paint
+    updateByScroll();
   })();
   </script>
 </body>
