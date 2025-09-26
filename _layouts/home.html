@@ -131,67 +131,108 @@
   })();
   </script>
 
-  <!-- Scrollspy: robust, highlights ALL sections (click + scroll), using viewport "reading line" -->
+  <!-- Scrollspy: sticky-nav aware; robust to expanding/collapsing content -->
   <script>
   (function () {
-    const ids = ['projects','experience','education','awards'];
+    const IDs = ['projects','experience','education','awards'];
     const nav = document.querySelector('.nav');
     if (!nav) return;
 
     const links = Object.fromEntries(
-      ids.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')])
+      IDs.map(id => [id, document.querySelector('.nav a[href="#' + id + '"]')])
     );
-    const headings = ids.map(id => document.getElementById(id)).filter(Boolean);
-    if (headings.length === 0) return;
+    const sections = IDs.map(id => document.getElementById(id)).filter(Boolean);
+    if (sections.length === 0) return;
 
     function setActive(id) {
-      Object.entries(links).forEach(([k, a]) => {
-        if (!a) return;
+      for (const [k, a] of Object.entries(links)) {
+        if (!a) continue;
         const on = (k === id);
         a.classList.toggle('active', on);
-        if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-      });
-    }
-
-    // Precompute section tops
-    let tops = [];
-    function recomputeTops() {
-      tops = headings.map(h => h.offsetTop);
-    }
-
-    // Click: set active immediately, then reconcile after scroll
-    Object.entries(links).forEach(([id, a]) => {
-      if (!a) return;
-      a.addEventListener('click', () => {
-        setActive(id);
-        requestAnimationFrame(() => setTimeout(updateByScroll, 80));
-      });
-    });
-
-    function updateByScroll() {
-      // Use a "reading line" ~ 33% down the viewport for stable selection.
-      const y = window.scrollY + (window.innerHeight * 0.33);
-
-      // Find the section whose [top, nextTop) range contains y
-      let idx = 0;
-      for (let i = 0; i < tops.length; i++) {
-        const start = tops[i];
-        const end = (i < tops.length - 1) ? tops[i + 1] : Number.POSITIVE_INFINITY;
-        if (y >= start && y < end) { idx = i; break; }
-        if (y >= tops[tops.length - 1]) { idx = tops.length - 1; } // bottom edge case
+        if (on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
       }
-      setActive(headings[idx].id);
     }
 
-    function init() {
-      recomputeTops();
-      updateByScroll();
+    // Immediate visual feedback on click; observer will reconcile after the jump
+    for (const [id, a] of Object.entries(links)) {
+      if (!a) continue;
+      a.addEventListener('click', () => setActive(id));
     }
 
-    window.addEventListener('load', init, { once: true });
-    window.addEventListener('resize', () => { recomputeTops(); updateByScroll(); }, { passive: true });
-    window.addEventListener('scroll', updateByScroll, { passive: true });
-    window.addEventListener('hashchange', updateByScroll);
+    // IntersectionObserver-based scrollspy (handles dynamic height changes)
+    function makeObserver() {
+      const topPad = (nav.offsetHeight || 0) + 8;                 // account for sticky nav
+      const bottomPad = Math.round(window.innerHeight * 0.45);    // bias toward the upper 55% of viewport
+      const visible = new Map(IDs.map(id => [id, 0]));
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          const id = e.target.id;
+          // Clamp to [0,1]; browsers can report tiny negatives on edges
+          visible.set(id, Math.max(0, e.intersectionRatio));
+        });
+
+        // Choose the section with the highest intersection ratio;
+        // ties go to the one that appears earlier in the page.
+        let bestId = IDs[0], best = -1;
+        for (const id of IDs) {
+          const r = visible.get(id) ?? 0;
+          if (r > best + 0.001) { best = r; bestId = id; }
+        }
+        // If nothing is intersecting (very fast scroll), fall back to top-of-page heuristic
+        if (best <= 0) {
+          // nearest section by header distance to the reading line
+          const line = (nav.getBoundingClientRect().bottom || 0) + 8;
+          let nearest = IDs[0], minAbs = Infinity;
+          for (const s of sections) {
+            const d = Math.abs(s.getBoundingClientRect().top - line);
+            if (d < minAbs) { minAbs = d; nearest = s.id; }
+          }
+          bestId = nearest;
+        }
+        setActive(bestId);
+      }, {
+        root: null,
+        rootMargin: `-${topPad}px 0px -${bottomPad}px 0px`,
+        threshold: [0, .1, .25, .5, .75, 1]
+      });
+
+      sections.forEach(sec => io.observe(sec));
+
+      // Recreate observer on resize (nav height & viewport change)
+      window.addEventListener('resize', () => {
+        io.disconnect();
+        makeObserver();
+      }, { once: true });
+
+      // When <details> open/close changes layout, microtask tick will fire entries anyway,
+      // but in some browsers it helps to poke the observer:
+      document.addEventListener('toggle', (ev) => {
+        if (ev.target instanceof HTMLDetailsElement) {
+          // Force a recalculation by touching rootMargin (disconnect/reconnect pattern)
+          io.disconnect();
+          makeObserver();
+        }
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      makeObserver();
+    } else {
+      // Fallback: simple reading-line method
+      function updateByScroll() {
+        const line = (nav.getBoundingClientRect().bottom || 0) + 8;
+        let bestId = IDs[0], best = Infinity;
+        for (const s of sections) {
+          const d = Math.abs(s.getBoundingClientRect().top - line);
+          if (d < best) { best = d; bestId = s.id; }
+        }
+        setActive(bestId);
+      }
+      window.addEventListener('scroll', updateByScroll, { passive: true });
+      window.addEventListener('resize', updateByScroll, { passive: true });
+      window.addEventListener('load', updateByScroll, { once: true });
+    }
   })();
   </script>
 </body>
