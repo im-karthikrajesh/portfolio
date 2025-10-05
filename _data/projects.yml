@@ -79,5 +79,4 @@
     - "Partnered with business users on requirements, rapid prototyping, training, and SOPs to drive adoption; reusable modules to accelerate future projects."
     - "Outcome: resilient, traceable CRM-billing automation that improves customer journeys and reduces manual effort."
   tech: ["Zoho", "Deluge", "PHP", "Python", "MySQL", "REST", "Webhooks"]
-  repo: "https://github.com/im-karthikrajesh"  # project code is private
   image: "assets/img/projects/integrations.png"
