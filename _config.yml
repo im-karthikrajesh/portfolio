@@ -3,9 +3,10 @@ logo: /assets/img/headshot.png
 
 # Brief, hiring-focused description for SEO/snippets and the left rail
 description: >-
-  MSc in Business Analytics (University of Nottingham). Project Developer at
-  EMtel. This portfolio showcases my machine-learning projects and professional
-  experience.
+  Postgraduate in Business Analytics (University of Nottingham) with over four years of professional experience
+  in software engineering and data integration, complemented by applied machine learning expertise. 
+  I specialize in designing production-grade data pipelines, developing predictive models, 
+  and delivering enterprise solutions that drive operational efficiency and data-driven decision-making.
 
 # Theme & site basics
 theme: jekyll-theme-minimal
