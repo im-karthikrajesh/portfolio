@@ -58,7 +58,7 @@ title: "Portfolio"
 
 <!-- ===== Current role first ===== -->
 <div class="xp-card">
-  <h3>Project Developer, EMtel Limited</h3>
+  <h3>Software Developer, EMtel Limited</h3>
   <p class="xp-meta">
     <span class="xp-chip">Full-time</span> Sep 2025 – Present
     <span class="xp-dot">•</span>
