@@ -2,29 +2,30 @@
 
 This repository uses Docker for local Jekyll development. Ruby does not need to be installed on Windows.
 
-## Start the site
+## Commands
 
 From the repository root, run:
 
 ```bash
-docker compose up --build
+make help
+make run
+make test
+make clean
+make down
+make shell
 ```
 
-The site will be available at:
+## Target reference
+
+- `make help` prints the available commands.
+- `make run` starts the local site with `docker compose up --build`.
+- `make test` runs a clean Jekyll build inside Docker.
+- `make clean` removes generated Jekyll output and cache files.
+- `make down` stops the Docker Compose stack.
+- `make shell` opens a shell inside the Jekyll container.
+
+## Local URL
+
+When `make run` is active, the site is available at:
 
 `http://127.0.0.1:4000/portfolio/`
-
-## Notes
-
-- The repository is bind-mounted into the container, so local file changes are reflected immediately.
-- The container runs `bundle install` before starting Jekyll.
-- Jekyll serves on `0.0.0.0:4000`.
-- LiveReload is enabled on port `35729`. If browser refresh behavior is inconsistent on Windows file mounts, restart the compose stack.
-
-## Stop the site
-
-In another terminal from the repository root:
-
-```bash
-docker compose down
-```
