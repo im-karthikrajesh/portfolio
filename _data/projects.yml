@@ -67,16 +67,3 @@
   tech: ["Python", "Pandas", "scikit-learn", "PCA", "KMeans", "DBSCAN"]
   repo: "https://github.com/im-karthikrajesh/customer-analytics-and-segmentation"
   image: "assets/img/projects/segmentation.png"
-
-- title: "Zoho ↔ Zoey Integrations (EMtel)"
-  period: "2025"
-  tagline: "Production automations linking CRM and billing to streamline operations and engagement."
-  highlights:
-    - "End-to-end integrations between Zoho One and Tekton Zoey: data, events, and workflows unified across platforms."
-    - "Custom Deluge functions, webhooks, REST integrations (Zoho CRM/Books/Campaigns) with MySQL on Plesk; designed for reliability, auditability, and low maintenance."
-    - "Automation layers for lead routing, campaign engagement, account creation, call scheduling; standardised error handling and observability."
-    - "Predictive signals for likelihood-to-stay and interest intent embedded into Zoho for targeted outreach and tiered follow-ups."
-    - "Partnered with business users on requirements, rapid prototyping, training, and SOPs to drive adoption; reusable modules to accelerate future projects."
-    - "Outcome: resilient, traceable CRM-billing automation that improves customer journeys and reduces manual effort."
-  tech: ["Zoho", "Deluge", "PHP", "Python", "MySQL", "REST", "Webhooks"]
-  image: "assets/img/projects/integrations.png"
