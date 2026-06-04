@@ -3,10 +3,10 @@ logo: /assets/img/headshot.png
 
 # Brief, hiring-focused description for SEO/snippets and the left rail
 description: >-
-  Postgraduate in Business Analytics (University of Nottingham) with over four years of professional experience
-  in software engineering and data integration, complemented by applied machine learning expertise. 
-  I specialize in designing production-grade data pipelines, developing predictive models, 
-  and delivering enterprise solutions that drive operational efficiency and data-driven decision-making.
+  MSc Business Analytics graduate with 4.5+ years of commercial experience in software engineering,
+  data integration and analytics-driven solution delivery. I build scalable backend services,
+  production-grade data workflows, enterprise integrations and applied ML solutions that improve
+  operational efficiency and support data-driven decision-making.
 
 # Theme & site basics
 theme: jekyll-theme-minimal
