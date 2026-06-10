@@ -54,7 +54,7 @@ title: "Portfolio"
 
 ---
 
-## Core Skills {#skills}
+## Tech Stack {#tech-stack}
 
 <div class="xp-card">
   <h3>Software Engineering, Data Integration & Applied ML</h3>
@@ -87,7 +87,7 @@ title: "Portfolio"
   </div>
 
   <details>
-    <summary><strong>Detailed skill areas</strong></summary>
+    <summary><strong>Detailed stack areas</strong></summary>
     <p>
       <strong>Backend & integration:</strong> REST APIs, webhooks, OAuth, microservices, validation, logging, error handling and secure data synchronisation.<br/>
       <strong>Data & ML:</strong> predictive modelling, ML pipelines, feature engineering, calibration, temporal validation, geospatial analytics, statistical modelling and data visualisation.<br/>
