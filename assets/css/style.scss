@@ -19,7 +19,7 @@ footer[role="contentinfo"] {
 }
 
 /* Wider wrapper for better breathing room */
-.wrapper { max-width: 1100px; padding: 0 22px; }
+.wrapper { max-width: 1280px; padding: 0 24px; }
 
 /* Let browsers know both schemes are supported (affects form controls) */
 :root { color-scheme: light dark; }
@@ -154,7 +154,7 @@ img { max-width: 100%; height: auto; }
   padding: 22px;
 }
 .left-rail .hero .headshot {
-  width: 160px; height: 160px; margin-bottom: 8px;
+  width: 150px; height: 150px; margin-bottom: 8px;
 }
 .left-rail .hero .links {
   display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
@@ -174,22 +174,29 @@ img { max-width: 100%; height: auto; }
    ========================= */
 .nav {
   position: sticky; top: 0; z-index: 30;
-  display: flex; align-items: center; gap: 8px; margin: 16px 0 8px; padding: 10px 6px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 16px 0 8px;
+  padding: 10px 12px;
+  overflow: visible;
   backdrop-filter: blur(6px);
   background: var(--card-bg); /* fallback */
   /* If browser supports color-mix, add subtle translucency */
   background: color-mix(in oklab, var(--card-bg) 92%, transparent);
   border-radius: 12px; box-shadow: var(--shadow);
 }
-.nav::-webkit-scrollbar { display: none; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
 .nav a {
   flex: 0 0 auto;
-  padding: 5px 10px; border-radius: 999px; background: var(--card-bg);
+  padding: 6px 11px; border-radius: 999px; background: var(--card-bg);
   box-shadow: var(--shadow); font-weight: 600; white-space: nowrap;
   transition: transform .15s ease, box-shadow .15s ease;
 }
@@ -204,11 +211,10 @@ img { max-width: 100%; height: auto; }
 
 /* Theme toggle button */
 .theme-toggle {
-  margin-left: auto; /* push to right */
   flex: 0 0 auto;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-width: 48px;
-  padding: 5px 10px; border-radius: 999px;
+  padding: 6px 12px; border-radius: 999px;
   background: var(--card-bg); color: var(--text);
   border: 1px solid color-mix(in oklab, var(--text-muted) 30%, transparent);
   box-shadow: var(--shadow);
@@ -284,7 +290,7 @@ details[open] summary::before { transform: rotate(90deg); }
    ========================= */
 .shell {
   display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
   gap: 24px;
   align-items: start;
 }
@@ -388,11 +394,16 @@ details[open] summary::before { transform: rotate(90deg); }
 @media (max-width: 980px) {
   .shell { grid-template-columns: 1fr; }
   .left-rail { position: static; }
+  .nav { align-items: flex-start; }
+  .nav-links { flex-wrap: wrap; }
 }
 @media (max-width: 640px) {
+  .wrapper { padding: 0 16px; }
   .hero { flex-direction: column; text-align: center; }
   .hero .headshot { width: 120px; height: 120px; }
-  .nav { gap: 8px; }
+  .nav { gap: 8px; padding: 10px; }
+  .nav-links { gap: 8px; }
+  .nav a { padding: 5px 9px; font-size: .95rem; }
   .grid { grid-template-columns: 1fr; }
 }
 
