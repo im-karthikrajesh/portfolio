@@ -174,15 +174,22 @@ img { max-width: 100%; height: auto; }
    ========================= */
 .nav {
   position: sticky; top: 0; z-index: 30;
-  display: flex; gap: 12px; margin: 16px 0 8px; padding: 10px 6px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 8px; margin: 16px 0 8px; padding: 10px 6px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   backdrop-filter: blur(6px);
   background: var(--card-bg); /* fallback */
   /* If browser supports color-mix, add subtle translucency */
   background: color-mix(in oklab, var(--card-bg) 92%, transparent);
   border-radius: 12px; box-shadow: var(--shadow);
 }
+.nav::-webkit-scrollbar { display: none; }
 .nav a {
-  padding: 6px 12px; border-radius: 999px; background: var(--card-bg);
+  flex: 0 0 auto;
+  padding: 5px 10px; border-radius: 999px; background: var(--card-bg);
   box-shadow: var(--shadow); font-weight: 600; white-space: nowrap;
   transition: transform .15s ease, box-shadow .15s ease;
 }
@@ -198,8 +205,10 @@ img { max-width: 100%; height: auto; }
 /* Theme toggle button */
 .theme-toggle {
   margin-left: auto; /* push to right */
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 12px; border-radius: 999px;
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-width: 48px;
+  padding: 5px 10px; border-radius: 999px;
   background: var(--card-bg); color: var(--text);
   border: 1px solid color-mix(in oklab, var(--text-muted) 30%, transparent);
   box-shadow: var(--shadow);
@@ -358,7 +367,7 @@ details[open] summary::before { transform: rotate(90deg); }
   font-weight: 700;
 }
 
-/* Reusable button (used in Awards 'View awards') */
+/* Reusable button (used in Certifications 'View certifications') */
 .btn{
   display:inline-flex; align-items:center; gap:.5rem;
   padding:.55rem .9rem; border-radius:12px; font-weight:700;
@@ -383,7 +392,7 @@ details[open] summary::before { transform: rotate(90deg); }
 @media (max-width: 640px) {
   .hero { flex-direction: column; text-align: center; }
   .hero .headshot { width: 120px; height: 120px; }
-  .nav { overflow-x: auto; gap: 8px; }
+  .nav { gap: 8px; }
   .grid { grid-template-columns: 1fr; }
 }
 
