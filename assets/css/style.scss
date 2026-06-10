@@ -176,7 +176,7 @@ img { max-width: 100%; height: auto; }
   position: sticky; top: 0; z-index: 30;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 10px;
   margin: 16px 0 8px;
   padding: 10px 12px;
@@ -209,18 +209,15 @@ img { max-width: 100%; height: auto; }
   background: color-mix(in oklab, var(--accent) 14%, var(--card-bg));
 }
 
-/* Fixed theme toggle: always available independently of the sticky nav */
+/* Theme toggle button */
 .theme-toggle {
-  position: fixed;
-  top: 18px;
-  right: max(18px, calc((100vw - 1280px) / 2 + 24px));
-  z-index: 1000;
+  flex: 0 0 auto;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-width: 48px;
   padding: 6px 12px; border-radius: 999px;
   background: var(--card-bg); color: var(--text);
   border: 1px solid color-mix(in oklab, var(--text-muted) 30%, transparent);
-  box-shadow: var(--shadow-hover);
+  box-shadow: var(--shadow);
   cursor: pointer; font-weight: 700;
   transition: transform .15s ease, box-shadow .15s ease, background .2s ease, color .2s ease;
 }
@@ -404,10 +401,9 @@ details[open] summary::before { transform: rotate(90deg); }
   .wrapper { padding: 0 16px; }
   .hero { flex-direction: column; text-align: center; }
   .hero .headshot { width: 120px; height: 120px; }
-  .nav { gap: 8px; padding: 10px; padding-right: 64px; }
+  .nav { gap: 8px; padding: 10px; }
   .nav-links { gap: 8px; }
   .nav a { padding: 5px 9px; font-size: .95rem; }
-  .theme-toggle { top: 12px; right: 12px; }
   .grid { grid-template-columns: 1fr; }
 }
 
@@ -415,6 +411,6 @@ details[open] summary::before { transform: rotate(90deg); }
    Print
    ========================= */
 @media print {
-  .nav, .tags, .card .thumb, .theme-toggle { display: none !important; }
+  .nav, .tags, .card .thumb { display: none !important; }
   .card, .hero { box-shadow: none !important; }
 }
