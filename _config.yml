@@ -3,10 +3,12 @@ logo: /assets/img/headshot.png
 
 # Brief, hiring-focused description for SEO/snippets and the left rail
 description: >-
-  MSc Business Analytics graduate with 4.5+ years of commercial experience in software engineering,
-  data integration and analytics-driven solution delivery. I build scalable backend services,
-  production-grade data workflows, enterprise integrations and applied ML solutions that improve
-  operational efficiency and support data-driven decision-making.
+  Software Engineer with 5+ years of commercial experience across backend development, 
+  cloud-based applications, enterprise integrations, data workflows, and automation solutions. 
+  MSc Business Analytics graduate with applied expertise in machine learning, predictive modelling, 
+  data engineering, and AI-driven problem solving. I build scalable backend services, 
+  production-grade data pipelines, cloud-native solutions, enterprise integrations, and 
+  intelligent workflows that improve operational efficiency and support data-driven decision-making.
 
 # Theme & site basics
 theme: jekyll-theme-minimal
@@ -24,7 +26,7 @@ baseurl: "/portfolio"
 # Social / contact
 author:
   name: "Karthik Rajesh"
-  email: "karthikrajesh5@gmail.com"
+  email: "karthik_rajesh@outlook.com"
   github: "https://github.com/im-karthikrajesh"
   linkedin: "https://www.linkedin.com/in/karthikrajesh05"
 
