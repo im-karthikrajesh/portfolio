@@ -8,7 +8,8 @@ title: "Portfolio"
 {% if site.data.projects and site.data.projects.size > 0 %}
 <div class="grid">
   {% for p in site.data.projects %}
-  <div class="card">
+  <details class="card project-card">
+    <summary class="project-summary">
     {% if p.image %}
       <img class="thumb"
            src="{{ p.image | relative_url }}"
@@ -16,36 +17,56 @@ title: "Portfolio"
            loading="lazy" decoding="async">
     {% endif %}
 
-    <h3>{{ p.title }}</h3>
-    {% if p.period %}<p class="muted">{{ p.period }}</p>{% endif %}
-    {% if p.tagline %}<p>{{ p.tagline }}</p>{% endif %}
+      <div class="project-heading">
+        <div>
+          <h3 class="project-title">{{ p.title }}</h3>
+        </div>
+        <span class="project-cta">
+          <span class="when-closed">View details</span>
+          <span class="when-open project-close" title="Close project details">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+            <span class="sr-only">Close project details</span>
+          </span>
+        </span>
+      </div>
+
+      {% if p.tagline %}<span class="project-description">{{ p.tagline }}</span>{% endif %}
+    </summary>
+
+    <div class="project-body">
 
     {% if p.highlights %}
+      <h4>Project details</h4>
       <ul>
-        {% for h in p.highlights limit:3 %}<li>{{ h }}</li>{% endfor %}
+        {% for h in p.highlights %}<li>{{ h }}</li>{% endfor %}
       </ul>
-      {% if p.highlights.size > 3 %}
-        <details>
-          <summary>More details</summary>
-          <ul>
-            {% for h in p.highlights offset:3 %}<li>{{ h }}</li>{% endfor %}
-          </ul>
-        </details>
-      {% endif %}
     {% endif %}
 
-    <p class="meta">
-      {% if p.repo %}<a href="{{ p.repo }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
-      {% if p.demo %}{% if p.repo %} · {% endif %}<a href="{{ p.demo }}" target="_blank" rel="noopener">Live</a>{% endif %}
-      {% if p.report %}{% if p.repo or p.demo %} · {% endif %}<a href="{{ p.report }}" target="_blank" rel="noopener">Report</a>{% endif %}
-    </p>
-
     {% if p.tech %}
+      <h4>Tech stack</h4>
       <div class="tags">
         {% for t in p.tech %}<span class="tag">{{ t }}</span>{% endfor %}
       </div>
     {% endif %}
-  </div>
+
+    {% if p.repo or p.demo or p.report %}
+    <div class="project-actions">
+      {% if p.repo %}
+        <a class="project-link" href="{{ p.repo }}" target="_blank" rel="noopener" aria-label="View {{ p.title }} on GitHub">
+          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true">
+            <path fill="currentColor" d="M8 .2a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.24.49-2.71-1.08-2.71-1.08-.37-.95-.91-1.2-.91-1.2-.74-.51.06-.5.06-.5.82.06 1.25.85 1.25.85.73 1.25 1.92.89 2.39.68.07-.53.29-.89.52-1.1-1.79-.2-3.68-.9-3.68-4a3.14 3.14 0 0 1 .84-2.18 2.9 2.9 0 0 1 .08-2.16s.68-.22 2.23.84a7.7 7.7 0 0 1 4.06 0c1.55-1.06 2.23-.84 2.23-.84.3.7.32 1.5.08 2.16a3.14 3.14 0 0 1 .84 2.18c0 3.11-1.9 3.79-3.71 4 .3.26.56.78.56 1.58v2.34c0 .21.14.46.55.38A8 8 0 0 0 8 .2Z"/>
+          </svg>
+          GitHub
+        </a>
+      {% endif %}
+      {% if p.demo %}<a class="project-link" href="{{ p.demo }}" target="_blank" rel="noopener">Live</a>{% endif %}
+      {% if p.report %}<a class="project-link" href="{{ p.report }}" target="_blank" rel="noopener">Report</a>{% endif %}
+    </div>
+    {% endif %}
+    </div>
+  </details>
   {% endfor %}
 </div>
 {% else %}
