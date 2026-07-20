@@ -2,7 +2,6 @@
 # Use RELATIVE paths for images (no leading slash) so it works locally and on GitHub Pages.
 
 - title: "Hotel Booking Cancellations — Predictive & Geospatial Analysis"
-  period: "2025"
   tagline: "Calibrated, reproducible Geo-ML pipeline predicting booking-level cancellation risk and explaining cross-country heterogeneity."
   highlights:
     - "Harmonised multi-year hotel data with ISO-3; enriched with World Bank WDI + Hofstede; staged imputation (linear fills → UNSD region medians → PMM-MICE) with leakage controls and principled outlier handling."
@@ -15,7 +14,6 @@
   image: "assets/img/projects/hotel-bookings.png"
 
 - title: "Temporal Churn Prediction (ML)"
-  period: "2025"
   tagline: "Weekly churn pipeline with strict temporal causality: 90-day lookback, 38-day churn horizon, rolling 7-day snapshots."
   highlights:
     - "Features predominantly engineered in SQL (Spark): RFM, tenure, inter-purchase gaps & momentum, recency-weighted monetary value, rolling frequency, product diversity, and seasonal sine/cosine."
@@ -28,7 +26,6 @@
   image: "assets/img/projects/churn.png"
 
 - title: "Term-Deposit Subscription Predictor (ML)"
-  period: "2024"
   tagline: "Production-ready classifier to prioritise telemarketing contacts for fixed-term deposits."
   highlights:
     - "EDA on ~4k historical calls; addressed class imbalance (~78.5% non-subscribers); clean categorical encodings; leakage audit."
@@ -42,7 +39,6 @@
   image: "assets/img/projects/deposits.png"
 
 - title: "Brand Analysis Using Twitter/X (ML)"
-  period: "2025"
   tagline: "Actionable text-analytics workflow to compare brand conversations and surface micro-influencers."
   highlights:
     - "Text cleaning & normalisation: URL/emoji/mention stripping, tokenisation, stop-word removal, WordNet lemmatisation."
@@ -55,7 +51,6 @@
   image: "assets/img/projects/brand.png"
 
 - title: "Customer Analytics & Segmentation (ML)"
-  period: "2025"
   tagline: "End-to-end segmentation for a national convenience retailer (3k customers, 6 months)."
   highlights:
     - "Consolidated customers, category_spends, baskets, lineitems with strict cleansing: date parsing, currency/format normalisation, negative-value fixes, category corrections (e.g., bakery spend recomputation from line-items)."

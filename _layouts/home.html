@@ -92,8 +92,13 @@
 
           <button id="theme-toggle" class="theme-toggle" type="button"
                   aria-live="polite" aria-label="Toggle dark or light theme">
-            <span class="icon icon-sun" aria-hidden="true">☀️</span>
-            <span class="icon icon-moon" aria-hidden="true">🌙</span>
+            <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+            </svg>
             <span class="sr-only">Toggle theme</span>
           </button>
         </nav>
@@ -127,6 +132,36 @@
         btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
       });
     }, { once: true });
+  })();
+  </script>
+
+  <!-- Keep the selected project anchored below the sticky navigation. -->
+  <script>
+  (function () {
+    const cards = Array.from(document.querySelectorAll('details.project-card'));
+    if (cards.length === 0) return;
+
+    const nav = document.querySelector('.nav');
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function alignProject(card) {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+          const top = window.scrollY + card.getBoundingClientRect().top - navHeight - 12;
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: reduceMotion ? 'auto' : 'smooth'
+          });
+        });
+      });
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('toggle', function () {
+        alignProject(card);
+      });
+    });
   })();
   </script>
 
