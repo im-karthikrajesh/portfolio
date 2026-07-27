@@ -1,6 +1,23 @@
 # Each entry renders as a card on the homepage.
 # Use RELATIVE paths for images (no leading slash) so it works locally and on GitHub Pages.
 
+- title: "Odysseus — Open-Source Contribution"
+  tagline: "Merged a container-aware hardware detection and manual override feature into Odysseus, a large self-hosted AI workspace."
+  highlights:
+    - "Investigated a Docker hardware-visibility issue that caused Odysseus Cookbook to report no GPU and generate overly conservative CPU-only model recommendations."
+    - "Implemented container-aware probing in Python, adding probe-scope metadata and non-blocking warnings when container-visible GPU and memory resources may not reflect the host system."
+    - "Built JavaScript controls for rescanning, copying diagnostic information, and manually configuring GPU, VRAM, RAM, GPU count, and compute backend when detected values differ from the host environment."
+    - "Integrated the manual hardware profile into the recommendation workflow so model compatibility results update against the corrected configuration and stale Docker warnings are removed."
+    - "Added focused Pytest coverage and validated the feature through Python compilation, JavaScript syntax checks, Docker-based testing, browser validation, and the project’s CI pipeline."
+    - "Completed the contribution through maintainer review and merged it into the Odysseus development branch."
+  tech: ["Python", "JavaScript", "Docker", "Pytest", "CSS", "Ollama"]
+  repo: "https://github.com/odysseus-dev/odysseus"
+  repo_label: "Repository"
+  pr: "https://github.com/odysseus-dev/odysseus/pull/3658"
+  linkedin_post: "https://www.linkedin.com/posts/karthikrajesh05_opensource-softwareengineering-ai-ugcPost-7475133096737214465-iQV4/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFNR9IIB9TL4y86CmKy7V7Dogge9ULz52pc"
+  image: "assets/img/projects/odysseus-logo.png"
+  image_fit: "contain"
+
 - title: "Hotel Booking Cancellations — Predictive & Geospatial Analysis"
   tagline: "Calibrated, reproducible Geo-ML pipeline predicting booking-level cancellation risk and explaining cross-country heterogeneity."
   highlights:
