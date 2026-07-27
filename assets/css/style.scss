@@ -279,6 +279,12 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 10px;
   background: var(--bg-soft);
 }
+.card .thumb-contain {
+  object-fit: contain;
+  padding: 28px;
+  box-sizing: border-box;
+  background: #111318;
+}
 .card ul { margin: 8px 0 8px 1rem; padding: 0; }
 .card li { margin: 4px 0; }
 .card .meta { font-weight: 600; margin-top: 8px; }

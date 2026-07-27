@@ -11,7 +11,7 @@ title: "Portfolio"
   <details class="card project-card">
     <summary class="project-summary">
     {% if p.image %}
-      <img class="thumb"
+      <img class="thumb{% if p.image_fit == 'contain' %} thumb-contain{% endif %}"
            src="{{ p.image | relative_url }}"
            alt="{{ p.title }} thumbnail"
            loading="lazy" decoding="async">
@@ -51,14 +51,32 @@ title: "Portfolio"
       </div>
     {% endif %}
 
-    {% if p.repo or p.demo or p.report %}
+    {% if p.repo or p.pr or p.linkedin_post or p.demo or p.report %}
     <div class="project-actions">
       {% if p.repo %}
         <a class="project-link" href="{{ p.repo }}" target="_blank" rel="noopener" aria-label="View {{ p.title }} on GitHub">
           <svg class="ico" viewBox="0 0 16 16" aria-hidden="true">
             <path fill="currentColor" d="M8 .2a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33c-2.24.49-2.71-1.08-2.71-1.08-.37-.95-.91-1.2-.91-1.2-.74-.51.06-.5.06-.5.82.06 1.25.85 1.25.85.73 1.25 1.92.89 2.39.68.07-.53.29-.89.52-1.1-1.79-.2-3.68-.9-3.68-4a3.14 3.14 0 0 1 .84-2.18 2.9 2.9 0 0 1 .08-2.16s.68-.22 2.23.84a7.7 7.7 0 0 1 4.06 0c1.55-1.06 2.23-.84 2.23-.84.3.7.32 1.5.08 2.16a3.14 3.14 0 0 1 .84 2.18c0 3.11-1.9 3.79-3.71 4 .3.26.56.78.56 1.58v2.34c0 .21.14.46.55.38A8 8 0 0 0 8 .2Z"/>
           </svg>
-          GitHub
+          {{ p.repo_label | default: "GitHub" }}
+        </a>
+      {% endif %}
+      {% if p.pr %}
+        <a class="project-link" href="{{ p.pr }}" target="_blank" rel="noopener" aria-label="View the {{ p.title }} pull request">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="18" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M6 15V6m0 0 3 3M6 6 3 9m15 0v3a6 6 0 0 1-6 6H9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Pull request
+        </a>
+      {% endif %}
+      {% if p.linkedin_post %}
+        <a class="project-link" href="{{ p.linkedin_post }}" target="_blank" rel="noopener" aria-label="View the LinkedIn post about {{ p.title }}">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.95v5.65H9.37V9h3.4v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.56V9H3.56v11.45Z"/>
+          </svg>
+          LinkedIn post
         </a>
       {% endif %}
       {% if p.demo %}<a class="project-link" href="{{ p.demo }}" target="_blank" rel="noopener">Live</a>{% endif %}
