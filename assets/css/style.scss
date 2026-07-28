@@ -351,8 +351,13 @@ img { max-width: 100%; height: auto; }
   flex: 0 0 28px;
   color: var(--text-muted);
   background: currentColor;
-  -webkit-mask: var(--tech-icon) center / contain no-repeat;
-  mask: var(--tech-icon) center / contain no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
   transition: color .15s ease;
 }
 .tech-item-name {
@@ -401,7 +406,11 @@ img { max-width: 100%; height: auto; }
 {% for category in site.data.tech_stack %}
   {% for item in category.items %}
     {% if item.icon %}
-.tech-item-icon--{{ item.key }} { --tech-icon: url("{{ '/assets/icons/tech/' | append: item.icon | relative_url }}"); }
+      {% assign tech_icon_path = '/assets/icons/tech/' | append: item.icon %}
+.tech-item-icon--{{ item.key }} {
+  -webkit-mask-image: url("{{ tech_icon_path | relative_url }}");
+  mask-image: url("{{ tech_icon_path | relative_url }}");
+}
     {% endif %}
   {% endfor %}
 {% endfor %}
