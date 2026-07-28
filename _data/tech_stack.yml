@@ -1,0 +1,167 @@
+- name: Languages
+  layout: compact
+  items:
+    - name: Python
+      key: python
+      icon: python.svg
+      display: icon
+    - name: Java
+      key: java
+      icon: java.svg
+      display: icon
+    - name: Kotlin
+      key: kotlin
+      icon: kotlin.svg
+      display: icon
+    - name: JavaScript
+      key: javascript
+      icon: javascript.svg
+      display: icon
+    - name: SQL
+      display: chip
+    - name: PySpark
+      key: pyspark
+      icon: apachespark.svg
+      display: icon
+    - name: Shell scripting
+      key: shell-scripting
+      icon: gnubash.svg
+      display: icon
+
+- name: AI & ML
+  layout: wide
+  items:
+    - name: Pandas
+      key: pandas
+      icon: pandas.svg
+      display: icon
+    - name: NumPy
+      key: numpy
+      icon: numpy.svg
+      display: icon
+    - name: Scikit-learn
+      key: scikit-learn
+      icon: scikitlearn.svg
+      display: icon
+    - name: PyTorch
+      key: pytorch
+      icon: pytorch.svg
+      display: icon
+    - name: LLMs
+      display: chip
+    - name: Retrieval-Augmented Generation
+      display: chip
+    - name: OpenRouter
+      key: openrouter
+      icon: openrouter.svg
+      display: icon
+    - name: Hugging Face
+      key: hugging-face
+      icon: huggingface.svg
+      display: icon
+
+- name: Frameworks & Development
+  layout: compact
+  items:
+    - name: Spring Framework
+      key: spring-framework
+      icon: spring.svg
+      display: icon
+    - name: FastAPI
+      key: fastapi
+      icon: fastapi.svg
+      display: icon
+    - name: Django
+      key: django
+      icon: django.svg
+      display: icon
+    - name: Node.js
+      key: node-js
+      icon: nodedotjs.svg
+      display: icon
+    - name: ReactJS
+      key: react-js
+      icon: react.svg
+      display: icon
+    - name: Vue
+      key: vue
+      icon: vuedotjs.svg
+      display: icon
+    - name: PostgreSQL
+      key: postgresql
+      icon: postgresql.svg
+      display: icon
+    - name: MYSQL
+      key: mysql
+      icon: mysql.svg
+      display: icon
+
+- name: Cloud & DevOps
+  layout: wide
+  items:
+    - name: AWS
+      key: aws
+      icon: amazonwebservices.svg
+      display: icon
+    - name: Kubernetes
+      key: kubernetes
+      icon: kubernetes.svg
+      display: icon
+    - name: Docker
+      key: docker
+      icon: docker.svg
+      display: icon
+    - name: GitHub
+      key: github
+      icon: github.svg
+      display: icon
+    - name: GitHub Actions
+      key: github-actions
+      icon: githubactions.svg
+      display: icon
+    - name: Helm
+      key: helm
+      icon: helm.svg
+      display: icon
+    - name: Databricks
+      key: databricks
+      icon: databricks.svg
+      display: icon
+    - name: Spinnaker
+      key: spinnaker
+      icon: spinnaker.svg
+      display: icon
+    - name: Splunk
+      key: splunk
+      icon: splunk.svg
+      display: icon
+    - name: Jenkins
+      key: jenkins
+      icon: jenkins.svg
+      display: icon
+    - name: Kafka
+      key: kafka
+      icon: apachekafka.svg
+      display: icon
+    - name: GCP
+      key: gcp
+      icon: googlecloud.svg
+      display: icon
+    - name: Vertex AI
+      display: chip
+    - name: Zoho Catalyst
+      display: chip
+
+- name: AI-Assisted Development Tools
+  layout: full
+  items:
+    - name: Claude Code
+      key: claude-code
+      icon: anthropic.svg
+      display: icon
+    - name: Codex
+      display: chip
+    - name: GitHub Copilot
+      key: github-copilot
+      icon: githubcopilot.svg
+      display: icon

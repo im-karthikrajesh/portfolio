@@ -95,46 +95,7 @@ title: "Portfolio"
 
 ## Tech Stack {#tech-stack}
 
-<div class="xp-card">
-  <h3>Software Engineering, Data Integration & Applied ML</h3>
-  <p>
-    I build production-ready integrations, backend services, data workflows and ML-powered decision-support tools, combining commercial software engineering experience with applied business analytics expertise.
-  </p>
-
-  <div class="tags">
-    <span class="tag">Python</span>
-    <span class="tag">Java</span>
-    <span class="tag">Kotlin</span>
-    <span class="tag">JavaScript</span>
-    <span class="tag">SQL</span>
-    <span class="tag">PySpark</span>
-    <span class="tag">FastAPI</span>
-    <span class="tag">Flask</span>
-    <span class="tag">Django</span>
-    <span class="tag">Spring</span>
-    <span class="tag">ReactJS</span>
-    <span class="tag">AWS</span>
-    <span class="tag">Kubernetes</span>
-    <span class="tag">Docker</span>
-    <span class="tag">GitHub Actions</span>
-    <span class="tag">Zoho</span>
-    <span class="tag">scikit-learn</span>
-    <span class="tag">XGBoost</span>
-    <span class="tag">LightGBM</span>
-    <span class="tag">SHAP</span>
-    <span class="tag">LLMs/RAG</span>
-  </div>
-
-  <details>
-    <summary><strong>Detailed stack areas</strong></summary>
-    <p>
-      <strong>Backend & integration:</strong> REST APIs, webhooks, OAuth, microservices, validation, logging, error handling and secure data synchronisation.<br/>
-      <strong>Data & ML:</strong> predictive modelling, ML pipelines, feature engineering, calibration, temporal validation, geospatial analytics, statistical modelling and data visualisation.<br/>
-      <strong>Cloud & DevOps:</strong> AWS, Kubernetes, Docker, CI/CD, GitHub Actions, Databricks, Jenkins, Spinnaker, Splunk, Datadog and GCP/Vertex AI.<br/>
-      <strong>AI-assisted engineering:</strong> Codex, Claude Code and GitHub Copilot.
-    </p>
-  </details>
-</div>
+{% include tech-stack.html %}
 
 ---
 

@@ -1,0 +1,24 @@
+{% if site.data.tech_stack %}
+<div class="tech-stack-grid" role="list" aria-label="Technology categories">
+  {% for category in site.data.tech_stack %}
+  <section class="tech-category tech-category--{{ category.layout }}" role="listitem" aria-labelledby="tech-category-{{ forloop.index }}">
+    <h3 class="tech-category-title" id="tech-category-{{ forloop.index }}">{{ category.name }}</h3>
+
+    <div class="tech-items" role="list">
+      {% for item in category.items %}
+        {% if item.display == "chip" %}
+        <span class="tech-capability{% if item.span %} tech-capability--{{ item.span }}{% endif %}" role="listitem" tabindex="0">{{ item.name }}</span>
+        {% else %}
+        <div class="tech-item" role="listitem" tabindex="0">
+          {% if item.icon %}
+          <span class="tech-item-icon tech-item-icon--{{ item.key }}" aria-hidden="true"></span>
+          {% endif %}
+          <span class="tech-item-name">{{ item.name }}</span>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</div>
+{% endif %}
