@@ -101,62 +101,31 @@ title: "Portfolio"
 
 ## Experience {#experience}
 
-<div class="xp-card">
-  <h3>Software Developer, EMtel Limited</h3>
-  <p class="xp-meta">
-    Jan 2025 – Present
-    <span class="xp-dot">•</span> Nottingham, United Kingdom
-  </p>
+<div class="experience-list">
+  <article class="xp-card experience-card">
+    <h3>Software Developer, EMtel Limited</h3>
+    <p class="xp-meta">Jan 2025 – Present <span class="xp-dot">·</span> Nottingham, United Kingdom</p>
 
-  <ul class="xp-points">
-    <li>Designed and delivered end-to-end data and integration workflows across <strong>Zoho CRM</strong>, <strong>Tekton Zoey</strong> and internal systems using <strong>Python</strong>, <strong>Java</strong>, <strong>JavaScript</strong>, <strong>REST APIs</strong> and <strong>MySQL</strong>.</li>
-    <li>Improved data consistency, reduced manual effort and enabled scalable operational reporting through secure API-driven backend and synchronisation services.</li>
-    <li>Built customer intelligence and engagement analytics workflows using product history, sales-order behaviour, pricing, quantity, contract duration and campaign-interaction data.</li>
-    <li>Generated retention, upsell, next-best-product and intent signals, integrating the outputs into <strong>Zoho CRM</strong> to support targeted follow-ups and better customer decision-making.</li>
-    <li>Developed a secure customer self-service portal enabling authenticated users to configure products and generate sales orders independently, using a Python backend, JavaScript frontend, Docker, GitHub Actions and AWS hosting.</li>
-    <li>Engineered automations across Zoho CRM, Zoho Sign, Zoho Projects and Zoho Cliq, with robust logging, validation and error handling to improve observability, reliability and recoverability.</li>
-    <li>Worked closely with stakeholders to translate operational requirements into scalable workflows, documentation and maintainable technical solutions.</li>
-  </ul>
+    <div class="experience-copy">
+      <p>At EMtel, I design and deliver software, data and integration solutions that connect customer, sales, billing and operational workflows across Zoho One, the company’s billing system and internal applications. I translate business requirements into reliable backend services, API integrations and automated processes using technologies including Python, Java, JavaScript, SQL, Docker and AWS.</p>
 
-  <details>
-    <summary><strong>Core stack & tools</strong></summary>
-    <p>
-      <strong>Languages:</strong> Python, Java, JavaScript, SQL/MySQL, PHP, Deluge<br/>
-      <strong>Platforms:</strong> Zoho CRM, Zoho Sign, Zoho Projects, Zoho Cliq, Tekton Zoey, Plesk<br/>
-      <strong>Backend & integration:</strong> REST APIs, webhooks, OAuth, secure data synchronisation, validation, logging and error handling<br/>
-      <strong>DevOps & cloud:</strong> Docker, GitHub Actions, GitHub, AWS hosting<br/>
-      <strong>Analytics:</strong> customer intelligence, engagement analytics, intent scoring, retention and upsell signals
-    </p>
-  </details>
-</div>
+      <p>I have developed customer-intelligence workflows that generate retention, purchase-intent, upsell and next-best-product signals, with the results integrated into Zoho CRM to support more informed customer engagement. I also built a secure customer self-service portal for product configuration and sales-order generation, alongside automations spanning CRM, digital signatures, project delivery and customer support. Across these initiatives, I focus on maintainability, validation, observability and reducing manual effort through dependable technical solutions.</p>
+    </div>
+  </article>
 
-<div class="xp-card">
-  <h3>Senior Solutions Engineer, IBS Software</h3>
-  <p class="xp-meta">
-    Apr 2021 – Aug 2024
-    <span class="xp-dot">•</span> Kerala, India
-    <span class="xp-dot">•</span> Hybrid
-  </p>
-  <p class="muted"><em>Client: Expedia Group — Airmate flight operations platform</em></p>
+  <article class="xp-card experience-card">
+    <h3>Senior Solutions Engineer, IBS Software</h3>
+    <p class="xp-meta">Apr 2021 – Aug 2024 <span class="xp-dot">·</span> Kerala, India</p>
+    <p class="experience-client"><em>Client: Expedia Group</em></p>
 
-  <ul class="xp-points">
-    <li>Led the <strong>Runtime Compute Platform</strong> migration for Expedia’s Airmate flight operations system, modernising Java/Kotlin microservices onto a unified <strong>AWS</strong> and <strong>Kubernetes</strong>-based platform.</li>
-    <li>Improved scalability, deployment consistency, observability and analytics/BI enablement by aligning services with platform engineering standards.</li>
-    <li>Enhanced Airmate reliability and data quality by optimising flight-operations data pipelines, improving validation and strengthening data availability for stakeholders.</li>
-    <li>Owned platform delivery across feature development, architecture discussions, code reviews, release quality, production deployments and stakeholder alignment.</li>
-    <li>Acted as Scrum Master, leading sprint planning and execution, mentoring junior engineers and translating business requirements into scalable technical solutions.</li>
-    <li>Recognised with a <strong>Team Champ Award</strong> for the successful RCP migration and promoted to <strong>Senior Solutions Engineer</strong> for sustained technical leadership and delivery excellence.</li>
-  </ul>
+    <div class="experience-copy">
+      <p>At IBS Software, I worked for the Flights team across Expedia Group, focusing on Airmate, a flight-operations configuration platform that handles commissions, air-fare pricing, downstream booking, shopping, customer, baggage and other operational services. As the service owner, I was responsible for the platform’s technical delivery, operational stability and ongoing development.</p>
 
-  <details>
-    <summary><strong>Core stack & tools</strong></summary>
-    <p>
-      <strong>Languages & frameworks:</strong> Java, Kotlin, Python, JavaScript, ReactJS, microservices<br/>
-      <strong>Cloud & DevOps:</strong> AWS, Kubernetes, Docker, Jenkins, Spinnaker, GitHub Actions, Datadog<br/>
-      <strong>Data & platform:</strong> SQL, Kafka, data pipelines, validation, observability and BI enablement<br/>
-      <strong>Practices:</strong> Agile/Scrum, code reviews, production releases, stakeholder management and mentoring
-    </p>
-  </details>
+      <p>My feature work spanned Spring Boot-based Java and Kotlin microservices, ReactJS applications and cloud infrastructure. I took ownership of feature implementation, architecture discussions and enhancements, code reviews, production releases and platform reliability.</p>
+
+      <p>As project lead, I led the migration of Airmate services to Expedia Group’s managed AWS and Kubernetes-based Runtime Compute Platform, modernising application runtimes, deployment pipelines, security controls and observability while maintaining continuity for critical operational workflows.</p>
+    </div>
+  </article>
 </div>
 
 ---
