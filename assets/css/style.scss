@@ -517,7 +517,7 @@ details[open] summary::before { transform: rotate(90deg); }
   display: block;
 }
 .project-card[open] .thumb {
-  margin-bottom: 16px;
+  display: none;
 }
 .project-card[open] .project-cta {
   width: 34px;
