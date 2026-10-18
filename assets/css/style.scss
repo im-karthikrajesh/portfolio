@@ -156,17 +156,67 @@ img { max-width: 100%; height: auto; }
   flex-direction: column;
   text-align: center;
   align-items: center;
+  gap: 16px;
+  max-height: calc(100dvh - 48px);
   padding: 22px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-soft);
 }
 .left-rail .hero .headshot {
-  width: 150px; height: 150px; margin-bottom: 8px;
+  width: 104px; height: 104px;
+  flex: 0 0 auto;
+  margin: 0;
+}
+.left-rail .hero-text {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+.left-rail .hero-text h1 {
+  flex: 0 0 auto;
+  font-size: 1.65rem;
+  letter-spacing: -.025em;
+}
+.profile-role {
+  flex: 0 0 auto;
+  margin: 0 0 18px;
+  color: var(--accent-strong);
+  font-size: .9rem;
+  font-weight: 700;
+}
+.profile-bio {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-soft) transparent;
+  text-align: left;
+  font-size: .875rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.profile-bio p { margin: 0 0 14px; }
+.profile-bio p:first-child { color: var(--text); }
+.profile-bio p:last-child { margin-bottom: 0; }
+.profile-bio:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 .left-rail .hero .links {
-  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-soft);
 }
 .left-rail .hero .links a {
-  display: inline-flex; align-items: center; gap: 6px; font-weight: 700;
-  padding: 6px 10px; border-radius: 999px; background: var(--card-bg);
+  display: inline-flex; align-items: center; gap: 4px; font-weight: 700;
+  padding: 8px 6px; border-radius: 999px; background: var(--card-bg);
+  font-size: .78rem;
   border: 1px solid var(--border-soft); box-shadow: var(--shadow);
 }
 .left-rail .hero .links a:hover {
@@ -389,14 +439,12 @@ img { max-width: 100%; height: auto; }
   box-sizing: border-box;
   transition: border-color .15s ease, background .15s ease, color .15s ease;
 }
-.tech-item:hover,
-.tech-capability:hover {
+.tech-item:hover {
   color: var(--accent-strong);
   background: color-mix(in oklab, var(--accent) 8%, var(--bg-soft));
   border-color: color-mix(in oklab, var(--accent) 55%, var(--border-soft));
 }
-.tech-item:focus-visible,
-.tech-capability:focus-visible {
+.tech-item:focus-visible {
   color: var(--accent-strong);
   outline: 3px solid var(--ring);
   outline-offset: 2px;
@@ -582,7 +630,7 @@ details[open] summary::before { transform: rotate(90deg); }
   gap: 24px;
   align-items: start;
 }
-.left-rail { position: sticky; top: 88px; align-self: start; }
+.left-rail { position: sticky; top: 24px; align-self: start; }
 .content { min-width: 0; } /* prevent overflow in code blocks etc. */
 
 /* =========================
@@ -653,8 +701,11 @@ details[open] summary::before { transform: rotate(90deg); }
   margin: 0;
   color: var(--text);
   line-height: 1.7;
-  text-align: justify;
-  text-justify: inter-word;
+  font-size: .95rem;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 .experience-copy p + p {
   margin-top: 14px;
@@ -733,9 +784,29 @@ details[open] summary::before { transform: rotate(90deg); }
 /* =========================
    Mobile
    ========================= */
+@media (min-width: 981px) and (max-width: 1180px) {
+  .nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  :where(h2[id], h3[id], h4[id]) { scroll-margin-top: 112px; }
+  .tech-stack-grid { grid-template-columns: 1fr; }
+  .tech-category,
+  .tech-category--wide,
+  .tech-category--full { grid-column: 1; }
+}
 @media (max-width: 980px) {
   .shell { grid-template-columns: 1fr; }
   .left-rail { position: static; }
+  .left-rail .hero { max-height: none; }
+  .left-rail .hero-text h1 { order: 0; }
+  .profile-role { order: 1; }
+  .left-rail .hero .links {
+    order: 2;
+    margin: 0 0 18px;
+    padding: 0 0 16px;
+    border-top: 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .profile-bio { order: 3; }
+  .profile-bio { overflow: visible; max-width: 65ch; margin-inline: auto; }
   .nav { align-items: center; }
 }
 @media (max-width: 760px) {

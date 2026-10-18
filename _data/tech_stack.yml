@@ -9,16 +9,22 @@
       key: java
       icon: java.svg
       display: icon
-    - name: Kotlin
-      key: kotlin
-      icon: kotlin.svg
+    - name: TypeScript
+      key: typescript
+      icon: typescript.svg
       display: icon
     - name: JavaScript
       key: javascript
       icon: javascript.svg
       display: icon
+    - name: Kotlin
+      key: kotlin
+      icon: kotlin.svg
+      display: icon
     - name: SQL
-      display: chip
+      key: sql
+      icon: database.svg
+      display: icon
     - name: PySpark
       key: pyspark
       icon: apachespark.svg
@@ -48,16 +54,44 @@
       icon: pytorch.svg
       display: icon
     - name: LLMs
-      display: chip
+      key: llms
+      icon: llms.svg
+      display: icon
     - name: Retrieval-Augmented Generation
-      display: chip
+      key: rag
+      icon: rag.svg
+      display: icon
     - name: OpenRouter
       key: openrouter
       icon: openrouter.svg
       display: icon
-    - name: Hugging Face
-      key: hugging-face
-      icon: huggingface.svg
+    - name: Agentic AI
+      key: agentic-ai
+      icon: agentic-ai.svg
+      display: icon
+    - name: LangGraph
+      key: langgraph
+      icon: langgraph.svg
+      display: icon
+    - name: LangChain
+      key: langchain
+      icon: langchain.svg
+      display: icon
+    - name: Tool-calling
+      key: tool-calling
+      icon: tool-calling.svg
+      display: icon
+    - name: Embeddings
+      key: embeddings
+      icon: embeddings.svg
+      display: icon
+    - name: Vector search
+      key: vector-search
+      icon: vector-search.svg
+      display: icon
+    - name: pgvector
+      key: pgvector
+      icon: vector-database.svg
       display: icon
 
 - name: Frameworks & Development
@@ -71,9 +105,25 @@
       key: fastapi
       icon: fastapi.svg
       display: icon
-    - name: Django
-      key: django
-      icon: django.svg
+    - name: Flask
+      key: flask
+      icon: flask.svg
+      display: icon
+    - name: Pydantic
+      key: pydantic
+      icon: pydantic.svg
+      display: icon
+    - name: SQLAlchemy
+      key: sqlalchemy
+      icon: sqlalchemy.svg
+      display: icon
+    - name: Alembic
+      key: alembic
+      icon: migrations.svg
+      display: icon
+    - name: REST APIs
+      key: rest-api
+      icon: rest-api.svg
       display: icon
     - name: Node.js
       key: node-js
@@ -83,17 +133,9 @@
       key: react-js
       icon: react.svg
       display: icon
-    - name: Vue
-      key: vue
-      icon: vuedotjs.svg
-      display: icon
-    - name: PostgreSQL
-      key: postgresql
-      icon: postgresql.svg
-      display: icon
-    - name: MYSQL
-      key: mysql
-      icon: mysql.svg
+    - name: Vite
+      key: vite
+      icon: vite.svg
       display: icon
 
 - name: Cloud & DevOps
@@ -131,26 +173,50 @@
       key: spinnaker
       icon: spinnaker.svg
       display: icon
-    - name: Splunk
-      key: splunk
-      icon: splunk.svg
-      display: icon
     - name: Jenkins
       key: jenkins
       icon: jenkins.svg
-      display: icon
-    - name: Kafka
-      key: kafka
-      icon: apachekafka.svg
       display: icon
     - name: GCP
       key: gcp
       icon: googlecloud.svg
       display: icon
     - name: Vertex AI
-      display: chip
+      key: vertex-ai
+      icon: googlecloud.svg
+      display: icon
     - name: Zoho Catalyst
-      display: chip
+      key: zoho-catalyst
+      icon: zoho.svg
+      display: icon
+
+- name: Data, Observability & Platforms
+  layout: full
+  items:
+    - name: PostgreSQL
+      key: postgresql
+      icon: postgresql.svg
+      display: icon
+    - name: MySQL
+      key: mysql
+      icon: mysql.svg
+      display: icon
+    - name: Kafka
+      key: kafka
+      icon: apachekafka.svg
+      display: icon
+    - name: Datadog
+      key: datadog
+      icon: datadog.svg
+      display: icon
+    - name: Splunk
+      key: splunk
+      icon: splunk.svg
+      display: icon
+    - name: Tableau
+      key: tableau
+      icon: tableau.svg
+      display: icon
 
 - name: AI-Assisted Development Tools
   layout: full
@@ -160,7 +226,9 @@
       icon: anthropic.svg
       display: icon
     - name: Codex
-      display: chip
+      key: codex
+      icon: openai.svg
+      display: icon
     - name: GitHub Copilot
       key: github-copilot
       icon: githubcopilot.svg

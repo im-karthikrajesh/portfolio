@@ -12,3 +12,10 @@ portfolio has no runtime icon dependency.
 Brand names and logos remain the property of their respective owners. Refer to
 the source projects' legal and brand-use guidance before reusing these assets
 outside this portfolio.
+
+- `tableau.svg` and `openai.svg` are from Simple Icons 13.21.0 (CC0 1.0).
+- The concept pictograms (`database`, `agentic-ai`, `llms`, `rag`, `rest-api`,
+  `tool-calling`, `embeddings`, `vector-search`, `vector-database`, `migrations`)
+  are original SVG illustrations for capabilities without a standalone brand logo.
+  Alembic uses the migration pictogram; Vertex AI uses the Google Cloud logo,
+  Zoho Catalyst uses the Zoho logo, and Codex uses the OpenAI logo.
