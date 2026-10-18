@@ -103,15 +103,16 @@ title: "Portfolio"
 
 <div class="experience-list">
   <article class="xp-card experience-card">
-    <h3>Software Developer, EMtel Limited</h3>
-    <p class="xp-meta">Jan 2025 – Present <span class="xp-dot">·</span> Nottingham, United Kingdom</p>
+    <h3>Lead Software Engineer, EMtel Limited</h3>
+    <p class="xp-meta">Oct 2026 – Present <span class="xp-dot">·</span> Nottingham, United Kingdom</p>
+    <p class="xp-meta"><strong>Software Engineer</strong> <span class="xp-dot">·</span> Jan 2025 – Sep 2026</p>
 
     <div class="experience-copy">
-      <p>At EMtel, I design and deliver production software, AI-enabled applications, data workflows and enterprise integrations across CRM, billing, customer support and internal operational platforms. My work spans backend engineering, API integration, workflow automation and customer-facing applications using technologies including Python, Java, JavaScript, FastAPI, Flask, ReactJS, SQL, Docker and AWS.</p>
+      <p>At EMtel, I lead the architecture and end-to-end delivery of production software, AI-enabled products, enterprise integrations and automation solutions across CRM, billing and internal operational platforms. My responsibilities span requirements analysis, technical design, development, system integration and production deployment, with a focus on scalability, security, maintainability and operational reliability.</p>
 
-      <p>My work includes designing and delivering an internal AI Service Operations Copilot using Python, FastAPI, LangGraph, LLMs and Retrieval-Augmented Generation, combining live customer and operational data with internal knowledge through tool-calling agents, hybrid retrieval, evidence-grounded recommendations and human-in-the-loop approval workflows. I also built an end-to-end new-customer onboarding workflow that automates customer classification, document generation, onboarding activities and operational hand-offs across the Zoho ecosystem and internal systems, alongside a production Cancellation of Services application that integrates CRM with live billing data to support full-service cancellations and quantity reductions with effective-date validation, controlled updates and complete auditability.</p>
+      <p>I architected and delivered an enterprise AI Service Operations Copilot, combining agentic AI, LLMs, Retrieval-Augmented Generation (RAG), tool-calling, hybrid retrieval, reranking and human-in-the-loop controls to provide evidence-grounded operational intelligence. I also developed a production Cancellation of Services application, integrating CRM with authoritative billing data to support service cancellations and quantity reductions with effective-date validation, idempotency and full auditability. Additionally, I delivered an end-to-end customer onboarding workflow, automating customer classification, document generation, operational activities and cross-functional hand-offs.</p>
 
-      <p>Alongside these systems, I have built customer-intelligence workflows that generate retention, upsell, next-best-product and customer-intent signals, as well as a secure self-service portal that allows customers to configure services and generate sales orders independently. Across these initiatives, I focus on maintainable architecture, reliable integrations, observability, automation and reducing manual operational effort through dependable production systems.</p>
+      <p>My work also includes developing customer intelligence solutions that generate retention, upsell, next-best-product and customer-intent signals through machine learning, and building a secure self-service portal that enables customers to configure products, manage service selections and generate sales orders through integrated pricing and business rules. Across these initiatives, I focus on translating complex business requirements into reliable, maintainable production solutions that streamline operations, reduce manual effort and improve business efficiency.</p>
     </div>
   </article>
 
@@ -184,11 +185,12 @@ title: "Portfolio"
 <div class="xp-card">
   <h3>Professional Certifications</h3>
   <ul class="xp-points">
-    <li><strong>Machine Learning Operations (MLOps): Getting Started</strong> — Google Cloud, Nov 2025</li>
-    <li><strong>Python for Data Science, AI & Development</strong> — IBM, Nov 2025</li>
-    <li><strong>Time Series Forecasting using Python</strong> — Analytics Vidhya, Sep 2025</li>
-    <li><strong>Introduction to the OWASP Top 10</strong> — Udemy, Aug 2023</li>
-    <li><strong>Certified Secure Developer</strong> — Hack_EDU, July 2022</li>
+    <li><strong>Claude Code in Action</strong> – Anthropic</li>
+    <li><strong>Machine Learning Operations (MLOps): Getting Started</strong> — Google Cloud</li>
+    <li><strong>Python for Data Science, AI & Development</strong> — IBM</li>
+    <li><strong>Time Series Forecasting using Python</strong> — Analytics Vidhya</li>
+    <li><strong>Introduction to the OWASP Top 10</strong> — Udemy</li>
+    <li><strong>Certified Secure Developer</strong> — Hack_EDU</li>
   </ul>
 
   <p>

@@ -36,7 +36,7 @@
   <div class="wrapper">
     <div class="shell"><!-- two-column grid -->
 
-      <!-- LEFT RAIL (sticky): headshot above name + brief + links -->
+      <!-- Viewport-sized profile: identity and contacts stay visible around the biography. -->
       <aside class="left-rail">
         <div class="hero">
           <img class="headshot"
@@ -47,9 +47,17 @@
 
           <div class="hero-text">
             <h1>{{ site.title }}</h1>
-            <p class="tagline">{{ site.description }}</p>
+            <p class="profile-role">{{ site.role }}</p>
 
-            <p class="links">
+            <div class="profile-bio" role="region" aria-label="Professional background" tabindex="0">
+              {% assign bio_paragraphs = site.description | split: '. ' %}
+              {% assign role_prefix = site.role | append: ' with ' %}
+              {% for paragraph in bio_paragraphs %}
+              <p>{% if forloop.first %}{{ paragraph | remove_first: role_prefix }}{% else %}{{ paragraph }}{% endif %}{% unless forloop.last %}.{% endunless %}</p>
+              {% endfor %}
+            </div>
+
+            <p class="links" aria-label="Contact links">
               <a href="{{ site.author.github }}" target="_blank" rel="noopener">
                 <!-- GitHub icon -->
                 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true">

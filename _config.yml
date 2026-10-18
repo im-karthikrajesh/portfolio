@@ -1,14 +1,13 @@
 title: "Karthik Rajesh"
 logo: /assets/img/headshot.png
+role: "Lead Software Engineer"
 
 # Brief, hiring-focused description for SEO/snippets and the left rail
 description: >-
-  Software Engineer with 5+ years of commercial experience across backend development, 
-  cloud-based applications, enterprise integrations, data workflows, and automation solutions. 
-  MSc Business Analytics graduate with applied expertise in machine learning, predictive modelling, 
-  data engineering, and AI-driven problem solving. I build scalable backend services, 
-  production-grade data pipelines, cloud-native solutions, enterprise integrations, and 
-  intelligent workflows that improve operational efficiency and support data-driven decision-making.
+  Lead Software Engineer with 5+ years of commercial experience designing and delivering production software, AI-enabled products, backend systems, cloud-native applications and enterprise integrations.
+  I lead complex technical initiatives end-to-end, from requirements and architecture through development, integration and production deployment, with a focus on scalability, security and reliability.
+  MSc Business Analytics graduate from the University of Nottingham, with applied expertise in artificial intelligence, machine learning, predictive modelling and data engineering.
+  I combine technical leadership, practical problem-solving and a data-driven approach to deliver high-quality solutions that address complex business challenges and improve operational efficiency.
 
 # Theme & site basics
 theme: jekyll-theme-minimal
